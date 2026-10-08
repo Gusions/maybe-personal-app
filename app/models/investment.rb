@@ -2,17 +2,15 @@ class Investment < ApplicationRecord
   include Accountable
 
   SUBTYPES = {
-    "brokerage" => { short: "Brokerage", long: "Brokerage" },
-    "pension" => { short: "Pension", long: "Pension" },
-    "retirement" => { short: "Retirement", long: "Retirement" },
-    "401k" => { short: "401(k)", long: "401(k)" },
-    "roth_401k" => { short: "Roth 401(k)", long: "Roth 401(k)" },
-    "529_plan" => { short: "529 Plan", long: "529 Plan" },
-    "hsa" => { short: "HSA", long: "Health Savings Account" },
-    "mutual_fund" => { short: "Mutual Fund", long: "Mutual Fund" },
-    "ira" => { short: "IRA", long: "Traditional IRA" },
-    "roth_ira" => { short: "Roth IRA", long: "Roth IRA" },
-    "angel" => { short: "Angel", long: "Angel" }
+    "brokerage" => { short: "Conto titoli", long: "Conto titoli (Brokerage)" },
+    "fondo_pensione_negoziale" => { short: "Fondo negoziale", long: "Fondo Pensione Negoziale" },
+    "fondo_pensione_aperto" => { short: "Fondo aperto", long: "Fondo Pensione Aperto" },
+    "pip" => { short: "PIP", long: "PIP - Piano Individuale Pensionistico" },
+    "fondo_comune" => { short: "Fondo comune", long: "Fondo Comune d'Investimento" },
+    "etf" => { short: "ETF", long: "ETF" },
+    "obbligazioni" => { short: "Obbligazioni", long: "Obbligazioni (BTP/BOT/Corporate)" },
+    "polizza_vita" => { short: "Polizza vita", long: "Polizza Vita (Ramo I/III)" },
+    "pac" => { short: "PAC", long: "Piano di Accumulo del Capitale (PAC)" }
   }.freeze
 
   class << self
@@ -26,6 +24,10 @@ class Investment < ApplicationRecord
 
     def icon
       "line-chart"
+    end
+
+    def display_name
+      "Investimenti"
     end
   end
 end

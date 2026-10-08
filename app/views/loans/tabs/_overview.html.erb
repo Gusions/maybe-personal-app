@@ -30,9 +30,10 @@
   <%= summary_card title: t(".term") do %>
     <% if account.loan.term_months.present? %>
       <% if account.loan.term_months < 12 %>
-        <%= pluralize(account.loan.term_months, "month") %>
+        <%= account.loan.term_months == 1 ? "1 mese" : "#{account.loan.term_months} mesi" %>
       <% else %>
-        <%= pluralize(account.loan.term_months / 12, "year") %>
+        <% years = account.loan.term_months / 12 %>
+        <%= years == 1 ? "1 anno" : "#{years} anni" %>
       <% end %>
     <% else %>
       <%= t(".unknown") %>
@@ -40,13 +41,14 @@
   <% end %>
 
   <%= summary_card title: t(".type") do %>
-    <%= account.loan.rate_type&.titleize || t(".unknown") %>
+    <% rate_type_labels = { "fixed" => "Fisso", "variable" => "Variabile", "adjustable" => "Adattabile" } %>
+    <%= rate_type_labels[account.loan.rate_type] || t(".unknown") %>
   <% end %>
 </div>
 
 <div class="flex justify-center py-8">
   <%= render DS::Link.new(
-    text: "Edit loan details",
+    text: "Modifica dettagli prestito",
     variant: "ghost",
     href: edit_loan_path(account),
     frame: :modal

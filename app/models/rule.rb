@@ -87,7 +87,7 @@ class Rule < ApplicationRecord
     def no_duplicate_actions
       action_types = actions.reject(&:marked_for_destruction?).map(&:action_type)
 
-      errors.add(:base, "Rule cannot have duplicate actions #{action_types.inspect}") if action_types.uniq.count != action_types.count
+      errors.add(:base, "La regola non può avere azioni duplicate #{action_types.inspect}") if action_types.uniq.count != action_types.count
     end
 
     # Validation: To keep rules simple and easy to understand, we don't allow nested compound conditions.
@@ -97,7 +97,7 @@ class Rule < ApplicationRecord
       conditions.each do |condition|
         if condition.compound?
           if condition.sub_conditions.any? { |sub_condition| sub_condition.compound? }
-            errors.add(:base, "Compound conditions cannot be nested")
+            errors.add(:base, "Le condizioni composte non possono essere annidate")
           end
         end
       end

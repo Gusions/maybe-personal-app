@@ -6,9 +6,9 @@ class CustomConfirm
       new(
         destructive: true,
         high_severity: high_severity,
-        title: "Delete #{resource_name.titleize}?",
-        body: "Are you sure you want to delete #{resource_name.downcase}? This is not reversible.",
-        btn_text: "Delete #{resource_name.titleize}"
+        title: "Eliminare #{resource_name.downcase}?",
+        body: "Sei sicuro di voler eliminare #{resource_name.downcase}? L'operazione non è reversibile.",
+        btn_text: "Elimina #{resource_name.downcase}"
       )
     end
   end
@@ -38,14 +38,14 @@ class CustomConfirm
     end
 
     def default_title
-      "Are you sure?"
+      "Sei sicuro?"
     end
 
     def default_body
-      "This is not reversible."
+      "L'operazione non è reversibile."
     end
 
     def default_btn_text
-      "Confirm"
+      "Conferma"
     end
 end

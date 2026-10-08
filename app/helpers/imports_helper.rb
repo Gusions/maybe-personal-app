@@ -1,37 +1,37 @@
 module ImportsHelper
   def mapping_label(mapping_class)
     {
-      "Import::AccountTypeMapping" => "Account Type",
-      "Import::AccountMapping" => "Account",
-      "Import::CategoryMapping" => "Category",
+      "Import::AccountTypeMapping" => "Tipo di conto",
+      "Import::AccountMapping" => "Conto",
+      "Import::CategoryMapping" => "Categoria",
       "Import::TagMapping" => "Tag"
     }.fetch(mapping_class.name)
   end
 
   def import_col_label(key)
     {
-      date: "Date",
-      amount: "Amount",
-      name: "Name",
-      currency: "Currency",
-      category: "Category",
-      tags: "Tags",
-      account: "Account",
-      notes: "Notes",
-      qty: "Quantity",
+      date: "Data",
+      amount: "Importo",
+      name: "Nome",
+      currency: "Valuta",
+      category: "Categoria",
+      tags: "Tag",
+      account: "Conto",
+      notes: "Note",
+      qty: "Quantità",
       ticker: "Ticker",
-      exchange: "Exchange",
-      price: "Price",
-      entity_type: "Type"
+      exchange: "Borsa",
+      price: "Prezzo",
+      entity_type: "Tipo"
     }[key]
   end
 
   def dry_run_resource(key)
     map = {
-      transactions: DryRunResource.new(label: "Transactions", icon: "credit-card", text_class: "text-cyan-500", bg_class: "bg-cyan-500/5"),
-      accounts: DryRunResource.new(label: "Accounts", icon: "layers", text_class: "text-orange-500", bg_class: "bg-orange-500/5"),
-      categories: DryRunResource.new(label: "Categories", icon: "shapes", text_class: "text-blue-500", bg_class: "bg-blue-500/5"),
-      tags: DryRunResource.new(label: "Tags", icon: "tags", text_class: "text-violet-500", bg_class: "bg-violet-500/5")
+      transactions: DryRunResource.new(label: "Transazioni", icon: "credit-card", text_class: "text-cyan-500", bg_class: "bg-cyan-500/5"),
+      accounts: DryRunResource.new(label: "Conti", icon: "layers", text_class: "text-orange-500", bg_class: "bg-orange-500/5"),
+      categories: DryRunResource.new(label: "Categorie", icon: "shapes", text_class: "text-blue-500", bg_class: "bg-blue-500/5"),
+      tags: DryRunResource.new(label: "Tag", icon: "tags", text_class: "text-violet-500", bg_class: "bg-violet-500/5")
     }
 
     map[key]

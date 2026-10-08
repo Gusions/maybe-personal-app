@@ -26,14 +26,14 @@ class PlaidItemsControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_equal "Account linked successfully.  Please wait for accounts to sync.", flash[:notice]
+    assert_equal "Conto collegato con successo. Attendi che i conti vengano sincronizzati.", flash[:notice]
     assert_redirected_to accounts_path
   end
 
   test "destroy" do
     delete plaid_item_url(plaid_items(:one))
 
-    assert_equal "Accounts scheduled for deletion.", flash[:notice]
+    assert_equal "Conti pianificati per l'eliminazione.", flash[:notice]
     assert_enqueued_with job: DestroyJob
     assert_redirected_to accounts_path
   end

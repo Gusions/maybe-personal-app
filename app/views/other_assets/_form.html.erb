@@ -1,3 +1,7 @@
 <%# locals: (account:, url:) %>
 
-<%= render "accounts/form", account: account, url: url %>
+<%= render "accounts/form", account: account, url: url do |form| %>
+  <%= form.select :subtype,
+                 OtherAsset::SUBTYPES.map { |k, v| [v[:long], k] },
+                 { label: "Tipo", prompt: "Seleziona tipo (facoltativo)", include_blank: "Nessuno" } %>
+<% end %>

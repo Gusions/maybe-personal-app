@@ -12,57 +12,57 @@ class Period
   PERIODS = {
     "last_day" => {
       date_range: -> { [ 1.day.ago.to_date, Date.current ] },
-      label_short: "1D",
-      label: "Last Day",
-      comparison_label: "vs. yesterday"
+      label_short: "1G",
+      label: "Ultimo giorno",
+      comparison_label: "vs. ieri"
     },
     "current_week" => {
       date_range: -> { [ Date.current.beginning_of_week, Date.current ] },
-      label_short: "WTD",
-      label: "Current Week",
-      comparison_label: "vs. start of week"
+      label_short: "SET",
+      label: "Settimana corrente",
+      comparison_label: "vs. inizio settimana"
     },
     "last_7_days" => {
       date_range: -> { [ 7.days.ago.to_date, Date.current ] },
-      label_short: "7D",
-      label: "Last 7 Days",
-      comparison_label: "vs. last week"
+      label_short: "7G",
+      label: "Ultimi 7 giorni",
+      comparison_label: "vs. settimana scorsa"
     },
     "current_month" => {
       date_range: -> { [ Date.current.beginning_of_month, Date.current ] },
-      label_short: "MTD",
-      label: "Current Month",
-      comparison_label: "vs. start of month"
+      label_short: "MESE",
+      label: "Mese corrente",
+      comparison_label: "vs. inizio mese"
     },
     "last_30_days" => {
       date_range: -> { [ 30.days.ago.to_date, Date.current ] },
-      label_short: "30D",
-      label: "Last 30 Days",
-      comparison_label: "vs. last month"
+      label_short: "30G",
+      label: "Ultimi 30 giorni",
+      comparison_label: "vs. mese scorso"
     },
     "last_90_days" => {
       date_range: -> { [ 90.days.ago.to_date, Date.current ] },
-      label_short: "90D",
-      label: "Last 90 Days",
-      comparison_label: "vs. last quarter"
+      label_short: "90G",
+      label: "Ultimi 90 giorni",
+      comparison_label: "vs. trimestre scorso"
     },
     "current_year" => {
       date_range: -> { [ Date.current.beginning_of_year, Date.current ] },
-      label_short: "YTD",
-      label: "Current Year",
-      comparison_label: "vs. start of year"
+      label_short: "ANNO",
+      label: "Anno corrente",
+      comparison_label: "vs. inizio anno"
     },
     "last_365_days" => {
       date_range: -> { [ 365.days.ago.to_date, Date.current ] },
-      label_short: "365D",
-      label: "Last 365 Days",
-      comparison_label: "vs. 1 year ago"
+      label_short: "365G",
+      label: "Ultimi 365 giorni",
+      comparison_label: "vs. 1 anno fa"
     },
     "last_5_years" => {
       date_range: -> { [ 5.years.ago.to_date, Date.current ] },
-      label_short: "5Y",
-      label: "Last 5 Years",
-      comparison_label: "vs. 5 years ago"
+      label_short: "5A",
+      label: "Ultimi 5 anni",
+      comparison_label: "vs. 5 anni fa"
     }
   }
 

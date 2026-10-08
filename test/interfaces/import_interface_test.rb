@@ -242,7 +242,7 @@ module ImportInterfaceTest
     row = import.rows.first
     assert_equal "01/01/2024", row.date
     assert_equal "1234.56", row.amount
-    assert_equal "Imported item", row.name # Default name
+    assert_equal "Elemento importato", row.name # Default name
     assert_equal import.family.currency, row.currency # Default currency
   end
 
@@ -266,7 +266,7 @@ module ImportInterfaceTest
     row = import.rows.first
     assert_equal "01/01/2024", row.date
     assert_equal "1234.56", row.amount
-    assert_equal "Imported item", row.name # Falls back to default
+    assert_equal "Elemento importato", row.name # Falls back to default
     assert_equal "", row.category
     assert_equal "", row.tags
   end

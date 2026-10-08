@@ -24,7 +24,13 @@ module Maybe
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    # TODO: This is here for incremental adoption of localization.  This can be removed when all translations are implemented.
+    # This fork ships only in Italian: UI, mail e modelli parlano esclusivamente italiano.
+    # Nota: NON restringiamo `config.i18n.available_locales` qui, perché alcuni
+    # componenti (es. Money::Formatting) usano deliberatamente altri simboli di
+    # locale (:nl, :pt, :en...) per convenzioni di formattazione numerica,
+    # indipendenti dalla lingua dell'interfaccia. Il vincolo "solo italiano" per
+    # la UI è applicato a livello di modello (vedi Family#locale).
+    config.i18n.default_locale = :it
     config.i18n.fallbacks = true
 
     config.app_mode = (ENV["SELF_HOSTED"] == "true" || ENV["SELF_HOSTING_ENABLED"] == "true" ? "self_hosted" : "managed").inquiry

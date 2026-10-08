@@ -19,16 +19,16 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
         profile_image: file_fixture_upload("profile_image.png", "image/png", :binary),
         family_attributes: {
           name: "New Family Name",
-          country: "US",
-          date_format: "%m/%d/%Y",
-          currency: "USD",
-          locale: "en"
+          country: "IT",
+          date_format: "%d/%m/%Y",
+          currency: "EUR",
+          locale: "it"
         }
       }
     }
 
     assert_redirected_to settings_profile_url
-    assert_equal "Your profile has been updated.", flash[:notice]
+    assert_equal "Il tuo profilo è stato aggiornato.", flash[:notice]
   end
 
   test "admin can reset family data" do
@@ -83,7 +83,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     delete user_url(users(:family_member))
 
     assert_redirected_to settings_profile_url
-    assert_equal "Admin cannot delete account while other users are present. Please delete all members first.", flash[:alert]
+    assert_equal "L'amministratore non può eliminare l'account mentre sono presenti altri utenti. Elimina prima tutti i membri.", flash[:alert]
     assert_no_enqueued_jobs only: UserPurgeJob
     assert User.find(@admin.id).active?
   end

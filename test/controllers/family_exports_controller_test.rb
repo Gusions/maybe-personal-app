@@ -25,7 +25,7 @@ class FamilyExportsControllerTest < ActionDispatch::IntegrationTest
   test "admin can view export modal" do
     get new_family_export_path
     assert_response :success
-    assert_select "h2", text: "Export your data"
+    assert_select "h2", text: "Esporta i tuoi dati"
   end
 
   test "admin can create export" do
@@ -34,7 +34,7 @@ class FamilyExportsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to settings_profile_path
-    assert_equal "Export started. You'll be able to download it shortly.", flash[:notice]
+    assert_equal "Esportazione avviata. Potrai scaricarla a breve.", flash[:notice]
 
     export = @family.family_exports.last
     assert_equal "pending", export.status
@@ -48,7 +48,7 @@ class FamilyExportsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     assert_match export1.filename, response.body
-    assert_match "Exporting...", response.body
+    assert_match "Esportazione in corso...", response.body
   end
 
   test "admin can download completed export" do
@@ -68,6 +68,6 @@ class FamilyExportsControllerTest < ActionDispatch::IntegrationTest
 
     get download_family_export_path(export)
     assert_redirected_to settings_profile_path
-    assert_equal "Export not ready for download", flash[:alert]
+    assert_equal "Esportazione non ancora pronta per il download", flash[:alert]
   end
 end

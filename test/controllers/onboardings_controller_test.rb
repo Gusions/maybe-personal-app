@@ -14,13 +14,13 @@ class OnboardingsControllerTest < ActionDispatch::IntegrationTest
   test "should get show" do
     get onboarding_url
     assert_response :success
-    assert_select "h1", text: /set up your account/i
+    assert_select "h1", text: /Configuriamo il tuo account/i
   end
 
   test "should get preferences" do
     get preferences_onboarding_url
     assert_response :success
-    assert_select "h1", text: /preferences/i
+    assert_select "h1", text: /preferenze/i
   end
 
   test "preferences page renders Series chart data without errors" do
@@ -82,7 +82,7 @@ class OnboardingsControllerTest < ActionDispatch::IntegrationTest
   test "should get goals" do
     get goals_onboarding_url
     assert_response :success
-    assert_select "h1", text: /What brings you to Maybe/i
+    assert_select "h1", text: /Cosa ti porta su Maybe/i
   end
 
   test "should get trial" do
@@ -111,8 +111,7 @@ end
   get preferences_onboarding_url
   assert_response :success
 
-  # Verify all form fields are present
-  assert_select "select[name='user[family_attributes][locale]']"
+  # Verify all form fields are present (il selettore lingua non esiste: l'app supporta solo l'italiano)
   assert_select "select[name='user[family_attributes][currency]']"
   assert_select "select[name='user[family_attributes][date_format]']"
   assert_select "select[name='user[theme]']"

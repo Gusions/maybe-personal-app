@@ -25,7 +25,7 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to tags_url
-    assert_equal "Tag created", flash[:notice]
+    assert_equal "Tag creato", flash[:notice]
   end
 
   test "should get edit" do
@@ -37,6 +37,6 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
     patch tag_url(tags.first), params: { tag: { name: "Test Tag" } }
 
     assert_redirected_to tags_url
-    assert_equal "Tag updated", flash[:notice]
+    assert_equal "Tag aggiornato", flash[:notice]
   end
 end

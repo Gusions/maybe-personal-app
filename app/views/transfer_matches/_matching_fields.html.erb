@@ -3,15 +3,15 @@
 <% if candidates.any? %>
   <div data-controller="transfer-match" class="space-y-2">
     <p class="text-sm text-secondary">
-      Select a method for matching your transactions.
+      Seleziona un metodo per abbinare le tue transazioni.
     </p>
 
     <%= form.select :method,
               [
-                ["Match existing transaction (recommended)", "existing"],
-                ["Create new transaction", "new"]
+                ["Abbina a una transazione esistente (consigliato)", "existing"],
+                ["Crea una nuova transazione", "new"]
               ],
-              { selected: "existing", label: "Matching method" },
+              { selected: "existing", label: "Metodo di abbinamento" },
               data: { action: "change->transfer-match#update" } %>
 
     <div data-transfer-match-target="existingSelect">
@@ -19,19 +19,19 @@
                 candidates.map { |entry|
                   [entry_name_detailed(entry), entry.id]
                 },
-                { label: "Matching transaction" } %>
+                { label: "Transazione da abbinare" } %>
     </div>
 
     <div data-transfer-match-target="newSelect" class="hidden">
       <%= form.select :target_account_id,
                 accounts.map { |account| [account.name, account.id] },
-                { label: "Target account" } %>
+                { label: "Conto di destinazione" } %>
     </div>
   </div>
 <% else %>
   <p class="text-sm text-secondary">
-    We couldn't find any transactions to match from your other accounts.
-    Please select an account and we will create a new inflow transaction for you.
+    Non abbiamo trovato transazioni da abbinare negli altri tuoi conti.
+    Seleziona un conto e creeremo per te una nuova transazione in entrata.
   </p>
 
   <%= form.hidden_field :method, value: "new" %>
@@ -39,6 +39,6 @@
   <div>
     <%= form.select :target_account_id,
                 accounts.map { |account| [account.name, account.id] },
-                { label: "Target account" } %>
+                { label: "Conto di destinazione" } %>
   </div>
 <% end %>

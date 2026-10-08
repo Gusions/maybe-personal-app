@@ -18,7 +18,11 @@ module Provider::LlmConcept
   ChatResponse = Data.define(:id, :model, :messages, :function_requests)
   ChatFunctionRequest = Data.define(:id, :call_id, :function_name, :function_args)
 
-  def chat_response(prompt, model:, instructions: nil, functions: [], function_results: [], streamer: nil, previous_response_id: nil)
+  # `previous_messages` e `function_requests` sono usati dai provider (come Gemini) che non hanno
+  # una memoria conversazionale lato server: permettono di ricostruire l'intera cronologia della
+  # chat ad ogni chiamata. I provider con stato lato server (es. OpenAI, via `previous_response_id`)
+  # possono ignorarli.
+  def chat_response(prompt, model:, instructions: nil, functions: [], function_results: [], function_requests: [], previous_messages: [], streamer: nil, previous_response_id: nil)
     raise NotImplementedError, "Subclasses must implement #chat_response"
   end
 end

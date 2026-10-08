@@ -72,6 +72,6 @@ class RuleTest < ActiveSupport::TestCase
     )
 
     assert_not rule.valid?
-    assert_equal [ "Compound conditions cannot be nested" ], rule.errors.full_messages
+    assert_equal [ "Le condizioni composte non possono essere annidate" ], rule.errors.full_messages
   end
 end

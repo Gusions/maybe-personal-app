@@ -12,5 +12,5 @@ json.updated_at @message.updated_at.iso8601
 # Note: AI response will be processed asynchronously
 if @message.type == "UserMessage"
   json.ai_response_status "pending"
-  json.ai_response_message "AI response is being generated"
+  json.ai_response_message "La risposta dell'AI è in fase di generazione"
 end

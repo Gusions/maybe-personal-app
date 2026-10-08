@@ -1,5 +1,5 @@
 <%= render DS::Dialog.new do |dialog| %>
-  <% dialog.with_header(title: "Enter property manually") %>
+  <% dialog.with_header(title: "Inserisci immobile manualmente") %>
   <% dialog.with_body do %>
     <div class="flex gap-4">
       <%= render "properties/form_tabs", account: @account, active_tab: "value" %>
@@ -11,15 +11,15 @@
             <%= render "properties/form_alert", notice: @success_message, error: @error_message %>
 
             <%= form.money_field :balance,
-                label: "Estimated market value",
-                label_tooltip: "The estimated market value of your property. This number can often be found on sites like Zillow or Redfin, and is never an exact number.",
+                label: "Valore di mercato stimato",
+                label_tooltip: "Il valore di mercato stimato del tuo immobile. Spesso puoi trovare questo dato su portali immobiliari come Immobiliare.it o Idealista, ma non è mai un valore esatto.",
                 placeholder: "0" %>
           </div>
 
           <!-- Next button -->
           <div class="flex justify-end mt-4">
             <%= render DS::Button.new(
-              text: @account.active? ? "Save" : "Next",
+              text: @account.active? ? "Salva" : "Avanti",
               variant: "primary",
             ) %>
           </div>

@@ -22,6 +22,20 @@ class Provider::Registry
       region.to_sym == :us ? plaid_us : plaid_eu
     end
 
+    # Preferisce Gemini (gratuito) se configurato, altrimenti usa OpenAI.
+    # Usato nei punti che finora chiamavano `get_provider(:openai)` direttamente.
+    def ai_provider
+      gemini || openai
+    end
+
+    # Nome del modello da usare per la chat, in base al provider AI attivo.
+    def default_ai_model
+      provider = ai_provider
+      return nil unless provider
+
+      provider.class::MODELS.first
+    end
+
     private
       def stripe
         secret_key = ENV["STRIPE_SECRET_KEY"]
@@ -67,6 +81,14 @@ class Provider::Registry
 
         Provider::Openai.new(access_token)
       end
+
+      def gemini
+        api_key = ENV["GEMINI_API_KEY"]
+
+        return nil unless api_key.present?
+
+        Provider::Gemini.new(api_key)
+      end
   end
 
   def initialize(concept)
@@ -75,7 +97,7 @@ class Provider::Registry
   end
 
   def providers
-    available_providers.map { |p| self.class.send(p) }
+    available_providers.map { |p| self.class.send(p) }.compact
   end
 
   def get_provider(name)
@@ -96,7 +118,7 @@ class Provider::Registry
       when :securities
         %i[synth]
       when :llm
-        %i[openai]
+        %i[gemini openai]
       else
         %i[synth plaid_us plaid_eu github openai]
       end

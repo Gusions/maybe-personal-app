@@ -47,7 +47,7 @@ class Provider::Plaid
       user: { client_user_id: user_id },
       client_name: "Maybe Finance",
       country_codes: country_codes,
-      language: "en",
+      language: "it",
       webhook: webhooks_url,
       redirect_uri: redirect_url,
       transactions: { days_requested: MAX_HISTORY_DAYS }

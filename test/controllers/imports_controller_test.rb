@@ -42,7 +42,7 @@ class ImportsControllerTest < ActionDispatch::IntegrationTest
 
     post publish_import_url(import)
 
-    assert_equal "Your import has started in the background.", flash[:notice]
+    assert_equal "L'importazione è partita in background.", flash[:notice]
     assert_redirected_to import_path(import)
   end
 

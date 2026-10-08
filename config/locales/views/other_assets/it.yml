@@ -1,0 +1,7 @@
+---
+it:
+  other_assets:
+    edit:
+      edit: Modifica %{account}
+    new:
+      title: Inserisci i dettagli dell'attivo

@@ -15,7 +15,8 @@
                   </span>
                 </div>
                 <span class="text-sm text-primary group-hover:text-secondary">
-                  <%= t(".resume", type: @pending_import.type.titleize) %>
+                  <% import_type_labels = { "AccountImport" => "Importazione conto", "MintImport" => "Importazione Mint", "TransactionImport" => "Importazione transazioni", "TradeImport" => "Importazione operazioni" } %>
+                  <%= t(".resume", type: import_type_labels[@pending_import.type] || @pending_import.type) %>
                 </span>
               </div>
               <%= icon("chevron-right") %>

@@ -57,7 +57,7 @@ class Trade::CreateForm
       signed_amount = amount.to_d * -1
 
       entry = account.entries.build(
-        name: "Interest payment",
+        name: "Pagamento interessi",
         date: date,
         amount: signed_amount,
         currency: currency,

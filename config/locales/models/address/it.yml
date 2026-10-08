@@ -1,0 +1,11 @@
+---
+it:
+  address:
+    attributes:
+      country: Paese
+      line1: Indirizzo (riga 1)
+      line2: Indirizzo (riga 2)
+      locality: Città
+      postal_code: Codice postale
+      region: Regione
+    format: "%{line1} %{line2}, %{locality}, %{region} %{postal_code} %{country}"

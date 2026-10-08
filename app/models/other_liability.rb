@@ -13,5 +13,9 @@ class OtherLiability < ApplicationRecord
     def classification
       "liability"
     end
+
+    def display_name
+      "Altre Passività"
+    end
   end
 end

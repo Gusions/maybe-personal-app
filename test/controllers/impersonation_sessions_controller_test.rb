@@ -20,7 +20,7 @@ class ImpersonationSessionsControllerTest < ActionDispatch::IntegrationTest
 
     post impersonation_sessions_path, params: { impersonation_session: { impersonated_id: users(:family_member).id } }
 
-    assert_equal "Request sent to user. Waiting for approval.", flash[:notice]
+    assert_equal "Richiesta inviata all'utente. In attesa di approvazione.", flash[:notice]
     assert_redirected_to root_path
   end
 
@@ -36,7 +36,7 @@ class ImpersonationSessionsControllerTest < ActionDispatch::IntegrationTest
     # Joining the session
     post join_impersonation_sessions_path, params: { impersonation_session_id: impersonator_session.id }
     assert_equal impersonator_session, super_admin_session.reload.active_impersonator_session
-    assert_equal "Joined session", flash[:notice]
+    assert_equal "Sessione avviata", flash[:notice]
     assert_redirected_to root_path
 
     follow_redirect!
@@ -44,7 +44,7 @@ class ImpersonationSessionsControllerTest < ActionDispatch::IntegrationTest
     # Leaving the session
     delete leave_impersonation_sessions_path
     assert_nil super_admin_session.reload.active_impersonator_session
-    assert_equal "Left session", flash[:notice]
+    assert_equal "Sessione terminata", flash[:notice]
     assert_redirected_to root_path
 
     # Impersonation session still in progress because nobody has ended it yet
@@ -58,7 +58,7 @@ class ImpersonationSessionsControllerTest < ActionDispatch::IntegrationTest
 
     put complete_impersonation_session_path(impersonator_session)
 
-    assert_equal "Session completed", flash[:notice]
+    assert_equal "Sessione completata", flash[:notice]
     assert_nil super_admin.sessions.order(created_at: :desc).first.active_impersonator_session
     assert_equal "complete", impersonator_session.reload.status
     assert_redirected_to root_path
@@ -71,7 +71,7 @@ class ImpersonationSessionsControllerTest < ActionDispatch::IntegrationTest
 
     put complete_impersonation_session_path(impersonator_session)
 
-    assert_equal "Session completed", flash[:notice]
+    assert_equal "Sessione completata", flash[:notice]
     assert_equal "complete", impersonator_session.reload.status
     assert_redirected_to root_path
   end
@@ -93,7 +93,7 @@ class ImpersonationSessionsControllerTest < ActionDispatch::IntegrationTest
 
     put approve_impersonation_session_path(impersonator_session)
 
-    assert_equal "Request approved", flash[:notice]
+    assert_equal "Richiesta approvata", flash[:notice]
     assert_equal "in_progress", impersonator_session.reload.status
     assert_redirected_to root_path
   end
@@ -105,7 +105,7 @@ class ImpersonationSessionsControllerTest < ActionDispatch::IntegrationTest
 
     put reject_impersonation_session_path(impersonator_session)
 
-    assert_equal "Request rejected", flash[:notice]
+    assert_equal "Richiesta rifiutata", flash[:notice]
     assert_equal "rejected", impersonator_session.reload.status
     assert_redirected_to root_path
   end

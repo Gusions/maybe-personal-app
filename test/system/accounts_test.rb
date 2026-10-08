@@ -86,7 +86,7 @@ class AccountsTest < ApplicationSystemTestCase
     assert_account_created "Loan" do
       fill_in "account[accountable_attributes][initial_balance]", with: 1000
       fill_in "Interest rate", with: 5.25
-      select "Fixed", from: "Rate type"
+      select "Fisso", from: "Tipo di tasso"
       fill_in "Term (months)", with: 360
     end
   end

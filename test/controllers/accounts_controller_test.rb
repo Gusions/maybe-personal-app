@@ -30,6 +30,6 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
     delete account_url(@account)
     assert_redirected_to accounts_path
     assert_enqueued_with job: DestroyJob
-    assert_equal "Account scheduled for deletion", flash[:notice]
+    assert_equal "Conto pianificato per l'eliminazione", flash[:notice]
   end
 end

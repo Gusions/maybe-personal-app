@@ -62,7 +62,7 @@ class Assistant::Function
     def family_category_names
       @family_category_names ||= begin
         names = family.categories.pluck(:name)
-        names << "Uncategorized"
+        names << "Senza categoria"
         names
       end
     end

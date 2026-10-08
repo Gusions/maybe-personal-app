@@ -1,18 +1,18 @@
 module SettingsHelper
   SETTINGS_ORDER = [
     { name: "Account", path: :settings_profile_path },
-    { name: "Preferences", path: :settings_preferences_path },
-    { name: "Security", path: :settings_security_path },
-    { name: "Self hosting", path: :settings_hosting_path, condition: :self_hosted? },
-    { name: "API Key", path: :settings_api_key_path },
-    { name: "Billing", path: :settings_billing_path, condition: :not_self_hosted? },
-    { name: "Accounts", path: :accounts_path },
-    { name: "Imports", path: :imports_path },
-    { name: "Tags", path: :tags_path },
-    { name: "Categories", path: :categories_path },
-    { name: "Rules", path: :rules_path },
-    { name: "Merchants", path: :family_merchants_path },
-    { name: "What's new", path: :changelog_path },
+    { name: "Preferenze", path: :settings_preferences_path },
+    { name: "Sicurezza", path: :settings_security_path },
+    { name: "Self-hosting", path: :settings_hosting_path, condition: :self_hosted? },
+    { name: "Chiave API", path: :settings_api_key_path },
+    { name: "Fatturazione", path: :settings_billing_path, condition: :not_self_hosted? },
+    { name: "Conti", path: :accounts_path },
+    { name: "Importazioni", path: :imports_path },
+    { name: "Tag", path: :tags_path },
+    { name: "Categorie", path: :categories_path },
+    { name: "Regole", path: :rules_path },
+    { name: "Esercenti", path: :family_merchants_path },
+    { name: "Novità", path: :changelog_path },
     { name: "Feedback", path: :feedback_path }
   ]
 

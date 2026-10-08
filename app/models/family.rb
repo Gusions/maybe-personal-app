@@ -33,7 +33,9 @@ class Family < ApplicationRecord
   has_many :budgets, dependent: :destroy
   has_many :budget_categories, through: :budgets
 
-  validates :locale, inclusion: { in: I18n.available_locales.map(&:to_s) }
+  # Questo fork supporta solo l'italiano come lingua dell'interfaccia (vedi config/application.rb
+  # per il motivo per cui non usiamo I18n.available_locales qui).
+  validates :locale, inclusion: { in: %w[it] }
   validates :date_format, inclusion: { in: DATE_FORMATS.map(&:last) }
 
   def assigned_merchants

@@ -1,0 +1,39 @@
+---
+it:
+  holdings:
+    cash:
+      brokerage_cash: Liquidità del conto titoli
+    destroy:
+      success: Posizione eliminata
+    holding:
+      per_share: per azione
+      shares:
+        one: "%{qty} azione"
+        other: "%{qty} azioni"
+    index:
+      average_cost: Costo medio
+      holdings: Posizioni
+      name: Nome
+      new_holding: Nuova operazione
+      no_holdings: Nessuna posizione da mostrare.
+      return: Rendimento totale
+      weight: Peso
+    missing_price_tooltip:
+      description: Questo investimento ha valori mancanti e non è stato possibile
+        calcolarne il rendimento o il valore.
+      missing_data: Dati mancanti
+    show:
+      avg_cost_label: Costo medio
+      current_market_price_label: Prezzo di mercato attuale
+      delete: Elimina
+      delete_subtitle: Verranno eliminate la posizione e tutte le operazioni
+        associate su questo conto. Questa azione non può essere annullata.
+      delete_title: Elimina posizione
+      history: Storico
+      overview: Panoramica
+      portfolio_weight_label: Peso nel portafoglio
+      settings: Impostazioni
+      ticker_label: Ticker
+      trade_history_entry: "%{qty} azioni di %{security} a %{price}"
+      total_return_label: Rendimento totale
+      unknown: Sconosciuto

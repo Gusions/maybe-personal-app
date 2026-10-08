@@ -40,7 +40,7 @@ class LoansControllerTest < ActionDispatch::IntegrationTest
     assert_equal 50000, created_account.accountable.initial_balance
 
     assert_redirected_to created_account
-    assert_equal "Loan account created", flash[:notice]
+    assert_equal "Conto Prestiti creato", flash[:notice]
     assert_enqueued_with(job: SyncJob)
   end
 
@@ -73,7 +73,7 @@ class LoansControllerTest < ActionDispatch::IntegrationTest
     assert_equal 48000, @account.accountable.initial_balance
 
     assert_redirected_to @account
-    assert_equal "Loan account updated", flash[:notice]
+    assert_equal "Conto Prestiti aggiornato", flash[:notice]
     assert_enqueued_with(job: SyncJob)
   end
 end

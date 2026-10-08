@@ -1,0 +1,16 @@
+---
+it:
+  layouts:
+    auth:
+      sign_in: Accedi
+      sign_up: Crea account
+    shared:
+      htmldoc:
+        existing_account: Hai già un account?
+        no_account: Nuovo su Maybe?
+        sign_in: Accedi
+        sign_up: Crea account
+        your_account: Il tuo account
+      footer:
+        privacy_policy: Informativa sulla privacy
+        terms_of_service: Termini di servizio

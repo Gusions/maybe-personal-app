@@ -2,7 +2,8 @@ class CreditCard < ApplicationRecord
   include Accountable
 
   SUBTYPES = {
-    "credit_card" => { short: "Credit Card", long: "Credit Card" }
+    "credit_card" => { short: "Carta di credito", long: "Carta di Credito" },
+    "revolving" => { short: "Revolving", long: "Carta di Credito Revolving" }
   }.freeze
 
   class << self
@@ -16,6 +17,10 @@ class CreditCard < ApplicationRecord
 
     def classification
       "liability"
+    end
+
+    def display_name
+      "Carte di Credito"
     end
   end
 

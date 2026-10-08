@@ -24,7 +24,7 @@ class PagesController < ApplicationController
 
     @cashflow_sankey_data = build_cashflow_sankey_data(income_totals, expense_totals, family_currency)
 
-    @breadcrumbs = [ [ "Home", root_path ], [ "Dashboard", nil ] ]
+    @breadcrumbs = [ [ "Home", root_path ], [ "Panoramica", nil ] ]
   end
 
   def changelog
@@ -35,9 +35,9 @@ class PagesController < ApplicationController
       @release_notes = {
         avatar: "https://github.com/maybe-finance.png",
         username: "maybe-finance",
-        name: "Release notes unavailable",
+        name: "Note di rilascio non disponibili",
         published_at: Date.current,
-        body: "<p>Unable to fetch the latest release notes at this time. Please check back later or visit our <a href='https://github.com/maybe-finance/maybe/releases' target='_blank'>GitHub releases page</a> directly.</p>"
+        body: "<p>Non è stato possibile recuperare le note di rilascio in questo momento. Riprova più tardi oppure visita direttamente la <a href='https://github.com/maybe-finance/maybe/releases' target='_blank'>pagina delle release su GitHub</a>.</p>"
       }
     end
 

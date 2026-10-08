@@ -25,7 +25,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
 
     get changelog_path
     assert_response :ok
-    assert_select "h2", text: "Release notes unavailable"
+    assert_select "h2", text: "Note di rilascio non disponibili"
     assert_select "a[href='https://github.com/maybe-finance/maybe/releases']"
   end
 

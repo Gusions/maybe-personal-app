@@ -1,0 +1,36 @@
+---
+it:
+  settings:
+    hostings:
+      invite_code_settings:
+        description: Ogni nuovo utente che si unisce alla tua istanza di Maybe può farlo
+          solo tramite un codice di invito
+        email_confirmation_description: Se attivato, gli utenti devono confermare il proprio
+          indirizzo email quando lo modificano.
+        email_confirmation_title: Richiedi conferma email
+        generate_tokens: Genera nuovo codice
+        generated_tokens: Codici generati
+        title: Richiedi codice di invito per la registrazione
+      show:
+        general: Impostazioni generali
+        invites: Codici di invito
+        title: Self-Hosting
+        danger_zone: Zona pericolosa
+        clear_cache: Svuota cache dati
+        clear_cache_warning: Svuotare la cache dei dati rimuoverà tutti i tassi di cambio, i prezzi dei titoli, i saldi dei conti e altri dati. Questo non eliminerà conti, transazioni, categorie o altri dati di proprietà dell'utente.
+        confirm_clear_cache:
+          title: Svuotare la cache dati?
+          body: Sei sicuro di voler svuotare la cache dei dati? Questo rimuoverà tutti i tassi di cambio, i prezzi dei titoli, i saldi dei conti e altri dati. Questa azione non può essere annullata.
+      synth_settings:
+        api_calls_used: "%{used} / %{limit} chiamate API utilizzate (%{percentage})"
+        description: Inserisci la chiave API fornita da Synth
+        label: Chiave API
+        placeholder: Inserisci qui la tua chiave API
+        plan: "Piano %{plan}"
+        title: Impostazioni Synth
+      update:
+        failure: Valore dell'impostazione non valido
+        success: Impostazioni aggiornate
+      clear_cache:
+        cache_cleared: La cache dei dati è stata svuotata. L'operazione potrebbe richiedere alcuni istanti per completarsi.
+      not_authorized: Non sei autorizzato a eseguire questa azione

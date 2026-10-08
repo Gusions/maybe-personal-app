@@ -1,7 +1,7 @@
 class Vehicle < ApplicationRecord
   include Accountable
 
-  attribute :mileage_unit, :string, default: "mi"
+  attribute :mileage_unit, :string, default: "km"
 
   def mileage
     Measurement.new(mileage_value, mileage_unit) if mileage_value.present?
@@ -26,6 +26,10 @@ class Vehicle < ApplicationRecord
 
     def classification
       "asset"
+    end
+
+    def display_name
+      "Veicoli"
     end
   end
 

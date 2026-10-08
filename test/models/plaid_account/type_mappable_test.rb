@@ -19,7 +19,7 @@ class PlaidAccount::TypeMappableTest < ActiveSupport::TestCase
 
   test "maps subtypes" do
     assert_equal "checking", @mock_processor.map_subtype("depository", "checking")
-    assert_equal "roth_ira", @mock_processor.map_subtype("investment", "roth")
+    assert_equal "pip", @mock_processor.map_subtype("investment", "roth")
   end
 
   test "raises on invalid types" do

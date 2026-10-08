@@ -1,5 +1,13 @@
 empty:
   name: Family
+  locale: it
+  currency: USD
+  country: US
+  date_format: "%m-%d-%Y"
 
 dylan_family:
   name: The Dylan Family
+  locale: it
+  currency: USD
+  country: US
+  date_format: "%m-%d-%Y"

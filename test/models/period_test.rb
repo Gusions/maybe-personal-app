@@ -6,8 +6,8 @@ class PeriodTest < ActiveSupport::TestCase
       Period.new(start_date: nil, end_date: nil)
     end
 
-    assert_includes error.message, "Start date can't be blank"
-    assert_includes error.message, "End date can't be blank"
+    assert_includes error.message, "Start date non può essere lasciato in bianco"
+    assert_includes error.message, "End date non può essere lasciato in bianco"
   end
 
   test "raises validation error when start_date is not before end_date" do
@@ -37,7 +37,7 @@ class PeriodTest < ActiveSupport::TestCase
 
   test "label returns correct label for known period" do
     period = Period.from_key("last_30_days")
-    assert_equal "Last 30 Days", period.label
+    assert_equal "Ultimi 30 giorni", period.label
   end
 
   test "label returns Custom Period for unknown period" do
@@ -47,7 +47,7 @@ class PeriodTest < ActiveSupport::TestCase
 
   test "comparison_label returns correct label for known period" do
     period = Period.from_key("last_30_days")
-    assert_equal "vs. last month", period.comparison_label
+    assert_equal "vs. mese scorso", period.comparison_label
   end
 
   test "comparison_label returns date range for unknown period" do

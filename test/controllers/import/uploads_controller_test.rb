@@ -20,7 +20,7 @@ class Import::UploadsControllerTest < ActionDispatch::IntegrationTest
     }
 
     assert_redirected_to import_configuration_url(@import, template_hint: true)
-    assert_equal "CSV uploaded successfully.", flash[:notice]
+    assert_equal "CSV caricato con successo.", flash[:notice]
   end
 
   test "uploads valid csv by file" do
@@ -32,7 +32,7 @@ class Import::UploadsControllerTest < ActionDispatch::IntegrationTest
     }
 
     assert_redirected_to import_configuration_url(@import, template_hint: true)
-    assert_equal "CSV uploaded successfully.", flash[:notice]
+    assert_equal "CSV caricato con successo.", flash[:notice]
   end
 
   test "invalid csv cannot be uploaded" do
@@ -44,6 +44,6 @@ class Import::UploadsControllerTest < ActionDispatch::IntegrationTest
     }
 
     assert_response :unprocessable_entity
-    assert_equal "Must be valid CSV with headers and at least one row of data", flash[:alert]
+    assert_equal "Deve essere un CSV valido con intestazioni e almeno una riga di dati", flash[:alert]
   end
 end

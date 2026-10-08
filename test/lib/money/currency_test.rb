@@ -18,7 +18,7 @@ class Money::CurrencyTest < ActiveSupport::TestCase
     assert_equal "USD", @currency.iso_code
     assert_equal "United States Dollar", @currency.name
     assert_equal "$", @currency.symbol
-    assert_equal 1, @currency.priority
+    assert_equal 2, @currency.priority
     assert_equal "Cent", @currency.minor_unit
     assert_equal 100, @currency.minor_unit_conversion
     assert_equal 1, @currency.smallest_denomination

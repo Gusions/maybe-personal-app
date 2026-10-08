@@ -2,10 +2,12 @@ class Loan < ApplicationRecord
   include Accountable
 
   SUBTYPES = {
-    "mortgage" => { short: "Mortgage", long: "Mortgage" },
-    "student" => { short: "Student", long: "Student Loan" },
-    "auto" => { short: "Auto", long: "Auto Loan" },
-    "other" => { short: "Other", long: "Other Loan" }
+    "mortgage" => { short: "Mutuo", long: "Mutuo per la casa" },
+    "personal" => { short: "Personale", long: "Prestito Personale" },
+    "cessione_del_quinto" => { short: "Cessione del quinto", long: "Cessione del Quinto dello Stipendio" },
+    "auto" => { short: "Auto", long: "Prestito Auto" },
+    "student" => { short: "Studentesco", long: "Prestito Studentesco" },
+    "other" => { short: "Altro", long: "Altro Prestito" }
   }.freeze
 
   def monthly_payment
@@ -39,6 +41,10 @@ class Loan < ApplicationRecord
 
     def classification
       "liability"
+    end
+
+    def display_name
+      "Prestiti"
     end
   end
 end

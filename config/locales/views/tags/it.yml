@@ -1,0 +1,23 @@
+---
+it:
+  tags:
+    create:
+      created: Tag creato
+      error: 'Errore nella creazione del tag: %{error}'
+    destroy:
+      deleted: Tag eliminato
+    edit:
+      edit: Modifica tag
+    form:
+      placeholder: Nome del tag
+    index:
+      empty: Nessun tag ancora
+      new: Nuovo tag
+      tags: Tag
+    new:
+      new: Nuovo tag
+    tag:
+      delete: Elimina
+      edit: Modifica
+    update:
+      updated: Tag aggiornato

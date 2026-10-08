@@ -1,0 +1,27 @@
+---
+it:
+  plaid_items:
+    create:
+      success: Conto collegato con successo. Attendi che i conti vengano sincronizzati.
+    destroy:
+      success: Conti pianificati per l'eliminazione.
+    plaid_item:
+      add_new: Aggiungi nuova connessione
+      confirm_accept: Elimina istituto
+      confirm_body: Questo eliminerà definitivamente tutti i conti di questo gruppo
+        e tutti i dati associati.
+      confirm_title: Eliminare l'istituto?
+      connection_lost: Connessione persa
+      connection_lost_description: Questa connessione non è più valida. Dovrai eliminare
+        questa connessione e aggiungerla di nuovo per continuare a sincronizzare i
+        dati.
+      delete: Elimina
+      error: Si è verificato un errore durante la sincronizzazione dei dati
+      no_accounts_description: Non siamo riusciti a caricare nessun conto da questo
+        istituto finanziario.
+      no_accounts_title: Nessun conto trovato
+      requires_update: Richiede una nuova autenticazione
+      status: Ultima sincronizzazione %{timestamp} fa
+      status_never: Richiede sincronizzazione dei dati
+      syncing: Sincronizzazione in corso...
+      update: Aggiorna connessione

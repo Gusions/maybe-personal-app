@@ -43,7 +43,7 @@
         size: :lg,
         full_width: true,
         href: oauth_authorization_path,
-        data: { disable_with: "Authorizing..." }
+        data: { disable_with: "Autorizzazione in corso..." }
       ) %>
     <% end %>
 
@@ -65,12 +65,12 @@
         size: :lg,
         full_width: true,
         href: oauth_authorization_path,
-        data: { disable_with: "Denying..." }
+        data: { disable_with: "Rifiuto in corso..." }
       ) %>
     <% end %>
   </div>
 
   <p class="text-xs text-tertiary text-center">
-    By authorizing, you allow this app to access your Maybe data according to the permissions above.
+    Autorizzando, consenti a questa app di accedere ai tuoi dati Maybe secondo i permessi indicati sopra.
   </p>
 </div>

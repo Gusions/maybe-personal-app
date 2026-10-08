@@ -11,7 +11,7 @@ class AccountsController < ApplicationController
 
   def sync_all
     family.sync_later
-    redirect_to accounts_path, notice: "Syncing accounts..."
+    redirect_to accounts_path, notice: "Sincronizzazione conti in corso..."
   end
 
   def show
@@ -55,10 +55,10 @@ class AccountsController < ApplicationController
 
   def destroy
     if @account.linked?
-      redirect_to account_path(@account), alert: "Cannot delete a linked account"
+      redirect_to account_path(@account), alert: "Non puoi eliminare un conto collegato"
     else
       @account.destroy_later
-      redirect_to accounts_path, notice: "Account scheduled for deletion"
+      redirect_to accounts_path, notice: "Conto pianificato per l'eliminazione"
     end
   end
 

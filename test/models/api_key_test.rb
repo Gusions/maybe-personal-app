@@ -25,19 +25,19 @@ class ApiKeyTest < ActiveSupport::TestCase
   test "should require name presence" do
     @api_key.name = nil
     assert_not @api_key.valid?
-    assert_includes @api_key.errors[:name], "can't be blank"
+    assert_includes @api_key.errors[:name], "non può essere lasciato in bianco"
   end
 
   test "should require scopes presence" do
     @api_key.scopes = nil
     assert_not @api_key.valid?
-    assert_includes @api_key.errors[:scopes], "can't be blank"
+    assert_includes @api_key.errors[:scopes], "non può essere lasciato in bianco"
   end
 
   test "should require user association" do
     @api_key.user = nil
     assert_not @api_key.valid?
-    assert_includes @api_key.errors[:user], "must exist"
+    assert_includes @api_key.errors[:user], "deve esistere"
   end
 
   test "should set display_key from key before saving" do

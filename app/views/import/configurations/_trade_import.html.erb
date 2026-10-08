@@ -3,38 +3,38 @@
 <%= styled_form_with model: @import, url: import_configuration_path(@import), scope: :import, method: :patch, class: "space-y-4" do |form| %>
   <div class="space-y-4">
     <div class="flex items-center gap-4">
-      <%= form.select :date_col_label, import.csv_headers, { include_blank: "Select column", label: "Date" }, required: true %>
+      <%= form.select :date_col_label, import.csv_headers, { include_blank: "Seleziona colonna", label: "Data" }, required: true %>
       <%= form.select :date_format, Family::DATE_FORMATS, { label: t(".date_format_label")}, label: true, required: true %>
     </div>
 
     <div class="flex items-center gap-4">
-      <%= form.select :qty_col_label, import.csv_headers, { include_blank: "Select column", label: "Quantity" }, required: true %>
-      <%= form.select :signage_convention, [["Buys are positive qty", "inflows_positive"], ["Buys are negative qty", "inflows_negative"]], label: true, required: true %>
+      <%= form.select :qty_col_label, import.csv_headers, { include_blank: "Seleziona colonna", label: "Quantità" }, required: true %>
+      <%= form.select :signage_convention, [["Gli acquisti hanno quantità positiva", "inflows_positive"], ["Gli acquisti hanno quantità negativa", "inflows_negative"]], label: true, required: true %>
     </div>
 
     <div class="flex items-center gap-4">
-      <%= form.select :currency_col_label, import.csv_headers, { include_blank: "Default", label: "Currency" } %>
-      <%= form.select :number_format, Import::NUMBER_FORMATS.keys, { label: "Format", prompt: "Select format" }, required: true %>
+      <%= form.select :currency_col_label, import.csv_headers, { include_blank: "Predefinita", label: "Valuta" } %>
+      <%= form.select :number_format, Import::NUMBER_FORMATS.keys, { label: "Formato", prompt: "Seleziona il formato" }, required: true %>
     </div>
 
-    <%= form.select :ticker_col_label, import.csv_headers, { include_blank: "Select column", label: "Ticker" }, required: true %>
-    <%= form.select :exchange_operating_mic_col_label, import.csv_headers, { include_blank: "Leave empty", label: "Stock exchange code" } %>
-    <%= form.select :price_col_label, import.csv_headers, { include_blank: "Select column", label: "Price" }, required: true %>
+    <%= form.select :ticker_col_label, import.csv_headers, { include_blank: "Seleziona colonna", label: "Ticker" }, required: true %>
+    <%= form.select :exchange_operating_mic_col_label, import.csv_headers, { include_blank: "Lascia vuoto", label: "Codice del mercato borsistico" } %>
+    <%= form.select :price_col_label, import.csv_headers, { include_blank: "Seleziona colonna", label: "Prezzo" }, required: true %>
 
     <% unless import.account.present? %>
-      <%= form.select :account_col_label, import.csv_headers, { include_blank: "Leave empty", label: "Account" } %>
+      <%= form.select :account_col_label, import.csv_headers, { include_blank: "Lascia vuoto", label: "Conto" } %>
     <% end %>
 
-    <%= form.select :name_col_label, import.csv_headers, { include_blank: "Leave empty", label: "Name" } %>
+    <%= form.select :name_col_label, import.csv_headers, { include_blank: "Lascia vuoto", label: "Nome" } %>
 
     <% unless Security.provider %>
       <div class="alert alert-warning">
         <p>
-          <strong>Note:</strong> The security prices provider is not configured.  Your trade imports will work, but Maybe will not backfill price history.  Please go to your settings to configure this.
+          <strong>Nota:</strong> il fornitore dei prezzi dei titoli non è configurato. Le importazioni di operazioni funzioneranno comunque, ma Maybe non recupererà lo storico dei prezzi. Vai nelle impostazioni per configurarlo.
         </p>
       </div>
     <% end %>
   </div>
 
-  <%= form.submit "Apply configuration", disabled: import.complete? %>
+  <%= form.submit "Applica configurazione", disabled: import.complete? %>
 <% end %>

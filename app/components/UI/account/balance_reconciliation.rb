@@ -29,103 +29,103 @@ class UI::Account::BalanceReconciliation < ApplicationComponent
 
     def default_items
       items = [
-        { label: "Start balance", value: balance.start_balance_money, tooltip: "The account balance at the beginning of this day", style: :start },
-        { label: "Net cash flow", value: net_cash_flow, tooltip: "Net change in balance from all transactions during the day", style: :flow }
+        { label: "Saldo iniziale", value: balance.start_balance_money, tooltip: "Il saldo del conto all'inizio di questa giornata", style: :start },
+        { label: "Flusso di cassa netto", value: net_cash_flow, tooltip: "Variazione netta del saldo dovuta a tutte le transazioni del giorno", style: :flow }
       ]
 
       if has_adjustments?
-        items << { label: "End balance", value: end_balance_before_adjustments, tooltip: "The calculated balance after all transactions", style: :subtotal }
-        items << { label: "Adjustments", value: total_adjustments, tooltip: "Manual reconciliations or other adjustments", style: :adjustment }
+        items << { label: "Saldo finale (prima delle rettifiche)", value: end_balance_before_adjustments, tooltip: "Il saldo calcolato dopo tutte le transazioni", style: :subtotal }
+        items << { label: "Rettifiche", value: total_adjustments, tooltip: "Riconciliazioni manuali o altre rettifiche", style: :adjustment }
       end
 
-      items << { label: "Final balance", value: balance.end_balance_money, tooltip: "The final account balance for the day", style: :final }
+      items << { label: "Saldo finale", value: balance.end_balance_money, tooltip: "Il saldo finale del conto per la giornata", style: :final }
       items
     end
 
     def credit_card_items
       items = [
-        { label: "Start balance", value: balance.start_balance_money, tooltip: "The balance owed at the beginning of this day", style: :start },
-        { label: "Charges", value: balance.cash_outflows_money, tooltip: "New charges made during the day", style: :flow },
-        { label: "Payments", value: balance.cash_inflows_money * -1, tooltip: "Payments made to the card during the day", style: :flow }
+        { label: "Saldo iniziale", value: balance.start_balance_money, tooltip: "Il saldo dovuto all'inizio di questa giornata", style: :start },
+        { label: "Spese", value: balance.cash_outflows_money, tooltip: "Nuove spese effettuate durante la giornata", style: :flow },
+        { label: "Pagamenti", value: balance.cash_inflows_money * -1, tooltip: "Pagamenti effettuati sulla carta durante la giornata", style: :flow }
       ]
 
       if has_adjustments?
-        items << { label: "End balance", value: end_balance_before_adjustments, tooltip: "The calculated balance after all transactions", style: :subtotal }
-        items << { label: "Adjustments", value: total_adjustments, tooltip: "Manual reconciliations or other adjustments", style: :adjustment }
+        items << { label: "Saldo finale (prima delle rettifiche)", value: end_balance_before_adjustments, tooltip: "Il saldo calcolato dopo tutte le transazioni", style: :subtotal }
+        items << { label: "Rettifiche", value: total_adjustments, tooltip: "Riconciliazioni manuali o altre rettifiche", style: :adjustment }
       end
 
-      items << { label: "Final balance", value: balance.end_balance_money, tooltip: "The final balance owed for the day", style: :final }
+      items << { label: "Saldo finale", value: balance.end_balance_money, tooltip: "Il saldo dovuto finale per la giornata", style: :final }
       items
     end
 
     def investment_items
       items = [
-        { label: "Start balance", value: balance.start_balance_money, tooltip: "The total portfolio value at the beginning of this day", style: :start }
+        { label: "Saldo iniziale", value: balance.start_balance_money, tooltip: "Il valore totale del portafoglio all'inizio di questa giornata", style: :start }
       ]
 
       # Change in brokerage cash (includes deposits, withdrawals, and cash from trades)
-      items << { label: "Change in brokerage cash", value: net_cash_flow, tooltip: "Net change in cash from deposits, withdrawals, and trades", style: :flow }
+      items << { label: "Variazione liquidità", value: net_cash_flow, tooltip: "Variazione netta della liquidità dovuta a depositi, prelievi e operazioni", style: :flow }
 
       # Change in holdings from trading activity
-      items << { label: "Change in holdings (buys/sells)", value: net_non_cash_flow, tooltip: "Impact on holdings from buying and selling securities", style: :flow }
+      items << { label: "Variazione posizioni (acquisti/vendite)", value: net_non_cash_flow, tooltip: "Impatto sulle posizioni dovuto all'acquisto e alla vendita di titoli", style: :flow }
 
       # Market price changes
-      items << { label: "Change in holdings (market price activity)", value: balance.net_market_flows_money, tooltip: "Change in holdings value from market price movements", style: :flow }
+      items << { label: "Variazione posizioni (andamento di mercato)", value: balance.net_market_flows_money, tooltip: "Variazione del valore delle posizioni dovuta ai movimenti di mercato", style: :flow }
 
       if has_adjustments?
-        items << { label: "End balance", value: end_balance_before_adjustments, tooltip: "The calculated balance after all activity", style: :subtotal }
-        items << { label: "Adjustments", value: total_adjustments, tooltip: "Manual reconciliations or other adjustments", style: :adjustment }
+        items << { label: "Saldo finale (prima delle rettifiche)", value: end_balance_before_adjustments, tooltip: "Il saldo calcolato dopo tutta l'attività", style: :subtotal }
+        items << { label: "Rettifiche", value: total_adjustments, tooltip: "Riconciliazioni manuali o altre rettifiche", style: :adjustment }
       end
 
-      items << { label: "Final balance", value: balance.end_balance_money, tooltip: "The final portfolio value for the day", style: :final }
+      items << { label: "Saldo finale", value: balance.end_balance_money, tooltip: "Il valore finale del portafoglio per la giornata", style: :final }
       items
     end
 
     def loan_items
       items = [
-        { label: "Start principal", value: balance.start_balance_money, tooltip: "The principal balance at the beginning of this day", style: :start },
-        { label: "Net principal change", value: net_non_cash_flow, tooltip: "Principal payments and new borrowing during the day", style: :flow }
+        { label: "Capitale iniziale", value: balance.start_balance_money, tooltip: "Il capitale residuo all'inizio di questa giornata", style: :start },
+        { label: "Variazione netta capitale", value: net_non_cash_flow, tooltip: "Pagamenti sul capitale e nuovi prestiti durante la giornata", style: :flow }
       ]
 
       if has_adjustments?
-        items << { label: "End principal", value: end_balance_before_adjustments, tooltip: "The calculated principal after all transactions", style: :subtotal }
-        items << { label: "Adjustments", value: balance.non_cash_adjustments_money, tooltip: "Manual reconciliations or other adjustments", style: :adjustment }
+        items << { label: "Capitale finale (prima delle rettifiche)", value: end_balance_before_adjustments, tooltip: "Il capitale calcolato dopo tutte le transazioni", style: :subtotal }
+        items << { label: "Rettifiche", value: balance.non_cash_adjustments_money, tooltip: "Riconciliazioni manuali o altre rettifiche", style: :adjustment }
       end
 
-      items << { label: "Final principal", value: balance.end_balance_money, tooltip: "The final principal balance for the day", style: :final }
+      items << { label: "Capitale finale", value: balance.end_balance_money, tooltip: "Il capitale residuo finale per la giornata", style: :final }
       items
     end
 
     def asset_items # Property/Vehicle
       items = [
-        { label: "Start value", value: balance.start_balance_money, tooltip: "The asset value at the beginning of this day", style: :start },
-        { label: "Net value change", value: net_total_flow, tooltip: "All value changes including improvements and depreciation", style: :flow }
+        { label: "Valore iniziale", value: balance.start_balance_money, tooltip: "Il valore dell'attivo all'inizio di questa giornata", style: :start },
+        { label: "Variazione netta valore", value: net_total_flow, tooltip: "Tutte le variazioni di valore, incluse migliorie e deprezzamento", style: :flow }
       ]
 
       if has_adjustments?
-        items << { label: "End value", value: end_balance_before_adjustments, tooltip: "The calculated value after all changes", style: :subtotal }
-        items << { label: "Adjustments", value: total_adjustments, tooltip: "Manual value adjustments or appraisals", style: :adjustment }
+        items << { label: "Valore finale (prima delle rettifiche)", value: end_balance_before_adjustments, tooltip: "Il valore calcolato dopo tutte le variazioni", style: :subtotal }
+        items << { label: "Rettifiche", value: total_adjustments, tooltip: "Rettifiche manuali del valore o perizie", style: :adjustment }
       end
 
-      items << { label: "Final value", value: balance.end_balance_money, tooltip: "The final asset value for the day", style: :final }
+      items << { label: "Valore finale", value: balance.end_balance_money, tooltip: "Il valore finale dell'attivo per la giornata", style: :final }
       items
     end
 
     def crypto_items
       items = [
-        { label: "Start balance", value: balance.start_balance_money, tooltip: "The crypto holdings value at the beginning of this day", style: :start }
+        { label: "Saldo iniziale", value: balance.start_balance_money, tooltip: "Il valore delle posizioni crypto all'inizio di questa giornata", style: :start }
       ]
 
-      items << { label: "Buys", value: balance.cash_outflows_money * -1, tooltip: "Crypto purchases during the day", style: :flow } if balance.cash_outflows != 0
-      items << { label: "Sells", value: balance.cash_inflows_money, tooltip: "Crypto sales during the day", style: :flow } if balance.cash_inflows != 0
-      items << { label: "Market changes", value: balance.net_market_flows_money, tooltip: "Value changes from market price movements", style: :flow } if balance.net_market_flows != 0
+      items << { label: "Acquisti", value: balance.cash_outflows_money * -1, tooltip: "Acquisti di crypto durante la giornata", style: :flow } if balance.cash_outflows != 0
+      items << { label: "Vendite", value: balance.cash_inflows_money, tooltip: "Vendite di crypto durante la giornata", style: :flow } if balance.cash_inflows != 0
+      items << { label: "Variazioni di mercato", value: balance.net_market_flows_money, tooltip: "Variazioni di valore dovute ai movimenti di mercato", style: :flow } if balance.net_market_flows != 0
 
       if has_adjustments?
-        items << { label: "End balance", value: end_balance_before_adjustments, tooltip: "The calculated balance after all activity", style: :subtotal }
-        items << { label: "Adjustments", value: total_adjustments, tooltip: "Manual reconciliations or other adjustments", style: :adjustment }
+        items << { label: "Saldo finale (prima delle rettifiche)", value: end_balance_before_adjustments, tooltip: "Il saldo calcolato dopo tutta l'attività", style: :subtotal }
+        items << { label: "Rettifiche", value: total_adjustments, tooltip: "Riconciliazioni manuali o altre rettifiche", style: :adjustment }
       end
 
-      items << { label: "Final balance", value: balance.end_balance_money, tooltip: "The final crypto holdings value for the day", style: :final }
+      items << { label: "Saldo finale", value: balance.end_balance_money, tooltip: "Il valore finale delle posizioni crypto per la giornata", style: :final }
       items
     end
 

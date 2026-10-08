@@ -2,19 +2,22 @@ class Property < ApplicationRecord
   include Accountable
 
   SUBTYPES = {
-    "single_family_home" => { short: "Single Family Home", long: "Single Family Home" },
-    "multi_family_home" => { short: "Multi-Family Home", long: "Multi-Family Home" },
-    "condominium" => { short: "Condo", long: "Condominium" },
-    "townhouse" => { short: "Townhouse", long: "Townhouse" },
-    "investment_property" => { short: "Investment Property", long: "Investment Property" },
-    "second_home" => { short: "Second Home", long: "Second Home" }
+    "appartamento" => { short: "Appartamento", long: "Appartamento" },
+    "villa" => { short: "Villa", long: "Villa / Villetta" },
+    "attico" => { short: "Attico", long: "Attico / Mansarda" },
+    "rustico" => { short: "Rustico", long: "Rustico / Casale" },
+    "immobile_commerciale" => { short: "Commerciale", long: "Immobile commerciale" },
+    "box_garage" => { short: "Box/Garage", long: "Box auto / Garage" },
+    "terreno" => { short: "Terreno", long: "Terreno" },
+    "investimento" => { short: "Investimento", long: "Immobile da investimento" },
+    "seconda_casa" => { short: "Seconda casa", long: "Seconda casa" }
   }.freeze
 
   has_one :address, as: :addressable, dependent: :destroy
 
   accepts_nested_attributes_for :address
 
-  attribute :area_unit, :string, default: "sqft"
+  attribute :area_unit, :string, default: "sqm"
 
   class << self
     def icon
@@ -27,6 +30,10 @@ class Property < ApplicationRecord
 
     def classification
       "asset"
+    end
+
+    def display_name
+      "Immobili"
     end
   end
 
@@ -43,11 +50,11 @@ class Property < ApplicationRecord
   end
 
   def balance_display_name
-    "market value"
+    "valore di mercato"
   end
 
   def opening_balance_display_name
-    "original purchase price"
+    "prezzo di acquisto originale"
   end
 
   private

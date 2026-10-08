@@ -12,7 +12,7 @@
               <%= account.name %>
             </span>
             <span class="text-red-500 animate-pulse">
-              (deletion in progress...)
+              (eliminazione in corso...)
             </span>
           </p>
         <% else %>
@@ -42,7 +42,7 @@
 
       <% if account.draft? %>
         <%= render DS::Link.new(
-          text: "Complete setup",
+          text: "Completa la configurazione",
           href: edit_account_path(account, return_to: return_to),
           variant: :outline,
           frame: :modal

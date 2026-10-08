@@ -31,20 +31,22 @@ class UI::Account::Chart < ApplicationComponent
     when "Investment", "Crypto"
       case view
       when "balance"
-        "Total account value"
+        "Valore totale del conto"
       when "holdings_balance"
-        "Holdings value"
+        "Valore delle posizioni"
       when "cash_balance"
-        "Cash value"
+        "Liquidità disponibile"
       end
-    when "Property", "Vehicle"
-      "Estimated #{account.accountable_type.humanize.downcase} value"
+    when "Property"
+      "Valore stimato dell'immobile"
+    when "Vehicle"
+      "Valore stimato del veicolo"
     when "CreditCard", "OtherLiability"
-      "Debt balance"
+      "Saldo debito"
     when "Loan"
-      "Remaining principal balance"
+      "Capitale residuo"
     else
-      "Balance"
+      "Saldo"
     end
   end
 

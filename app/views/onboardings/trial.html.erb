@@ -17,34 +17,34 @@
     <%= image_tag "logo-color.png", class: "w-16 mb-6" %>
 
     <p class="text-xl lg:text-3xl text-primary font-display font-medium">
-      Try Maybe for 14 days.
+      Prova Maybe gratis per 14 giorni.
     </p>
 
     <h2 class="text-xl lg:text-3xl font-display text-secondary font-medium mb-2">
-      No credit card required
+      Nessuna carta di credito richiesta
     </h2>
 
     <p class="text-sm text-secondary text-center mb-8">
-      Starting the trial activates your account for Maybe.  You won't need to enter payment details.
+      Avviando il periodo di prova attivi il tuo account Maybe. Non dovrai inserire alcun dato di pagamento.
     </p>
 
     <div class="w-full">
       <% if Current.family.can_start_trial? %>
         <%= render DS::Button.new(
-        text: "Try Maybe for 14 days",
+        text: "Prova Maybe per 14 giorni",
         href: subscription_path,
         full_width: true,
         data: { turbo: false }
       ) %>
       <% elsif Current.family.trialing? %>
         <%= render DS::Link.new(
-          text: "Continue trial",
+          text: "Continua il periodo di prova",
           href: root_path,
           full_width: true,
         ) %>
       <% else %>
         <%= render DS::Link.new(
-          text: "Upgrade",
+          text: "Esegui l'upgrade",
           href: upgrade_subscription_path,
           full_width: true,
         ) %>
@@ -53,7 +53,7 @@
   </div>
 
   <div class="space-y-8">
-    <h2 class="text-center text-lg lg:text-2xl font-medium text-primary">How your trial will work</h2>
+    <h2 class="text-center text-lg lg:text-2xl font-medium text-primary">Come funziona il periodo di prova</h2>
 
     <div class="flex gap-3">
       <div class="rounded-xl p-1 bg-gray-400/20 theme-dark:bg-gray-500/20 flex flex-col justify-between items-center text-secondary">
@@ -64,70 +64,70 @@
 
       <div class="space-y-12">
         <div class="space-y-1.5 text-sm">
-          <p class="text-primary font-medium">Today</p>
-          <p class="text-secondary">You'll get free access to Maybe for 14 days</p>
+          <p class="text-primary font-medium">Oggi</p>
+          <p class="text-secondary">Ottieni l'accesso gratuito a Maybe per 14 giorni</p>
         </div>
 
         <div class="space-y-1.5 text-sm">
-          <p class="text-primary font-medium">In 13 days (<%= 13.days.from_now.strftime("%B %d") %>)</p>
-          <p class="text-secondary">We'll notify you to remind you when your trial will end.</p>
+          <p class="text-primary font-medium">Tra 13 giorni (<%= 13.days.from_now.strftime("%d %B") %>)</p>
+          <p class="text-secondary">Ti avviseremo per ricordarti quando terminerà il periodo di prova.</p>
         </div>
 
         <div class="space-y-1.5 text-sm">
-          <p class="text-primary font-medium">In 14 days (<%= 14.days.from_now.strftime("%B %d") %>)</p>
-          <p class="text-secondary">Your trial ends &mdash; subscribe to continue using Maybe</p>
+          <p class="text-primary font-medium">Tra 14 giorni (<%= 14.days.from_now.strftime("%d %B") %>)</p>
+          <p class="text-secondary">Il periodo di prova termina &mdash; abbonati per continuare a usare Maybe</p>
         </div>
       </div>
     </div>
   </div>
 
   <div class="space-y-8 max-w-2xl mx-auto">
-    <h2 class="text-center text-lg lg:text-2xl font-medium text-primary">Here's what's included</h2>
+    <h2 class="text-center text-lg lg:text-2xl font-medium text-primary">Ecco cosa è incluso</h2>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-12 gap-y-6 text-secondary">
       <div class="flex flex-col gap-4 items-center">
         <%= render DS::FilledIcon.new(icon: "landmark", variant: :surface) %>
-        <p class="text-sm text-primary text-center">More than 10,000 institutions to connect to</p>
+        <p class="text-sm text-primary text-center">Più di 10.000 istituti a cui connetterti</p>
       </div>
 
       <div class="flex flex-col gap-4 items-center">
         <%= render DS::FilledIcon.new(icon: "layers", variant: :surface) %>
-        <p class="text-sm text-primary text-center">Connect unlimited accounts and account types</p>
+        <p class="text-sm text-primary text-center">Collega conti e tipologie di conto illimitati</p>
       </div>
 
       <div class="flex flex-col gap-4 items-center">
         <%= render DS::FilledIcon.new(icon: "line-chart", variant: :surface) %>
-        <p class="text-sm text-primary text-center">Performance and investment returns across portfolio</p>
+        <p class="text-sm text-primary text-center">Performance e rendimenti degli investimenti sull'intero portafoglio</p>
       </div>
 
       <div class="flex flex-col gap-4 items-center">
         <%= render DS::FilledIcon.new(icon: "credit-card", variant: :surface) %>
-        <p class="text-sm text-primary text-center">Comprehensive transaction tracking experience</p>
+        <p class="text-sm text-primary text-center">Un tracciamento completo delle transazioni</p>
       </div>
 
       <div class="flex flex-col gap-4 items-center">
         <%= render "chats/ai_avatar" %>
-        <p class="text-sm text-primary text-center">Unlimited access and chats with Maybe AI</p>
+        <p class="text-sm text-primary text-center">Accesso illimitato e chat con Maybe AI</p>
       </div>
 
       <div class="flex flex-col gap-4 items-center">
         <%= render DS::FilledIcon.new(icon: "keyboard", variant: :surface) %>
-        <p class="text-sm text-primary text-center">Manual account tracking that works well</p>
+        <p class="text-sm text-primary text-center">Tracciamento manuale dei conti che funziona bene</p>
       </div>
 
       <div class="flex flex-col gap-4 items-center">
         <%= render DS::FilledIcon.new(icon: "globe-2", variant: :surface) %>
-        <p class="text-sm text-primary text-center">Multiple currencies and near global coverage</p>
+        <p class="text-sm text-primary text-center">Più valute e copertura quasi globale</p>
       </div>
 
       <div class="flex flex-col gap-4 items-center">
         <%= render DS::FilledIcon.new(icon: "ship", variant: :surface) %>
-        <p class="text-sm text-primary text-center">Early access to newly released features</p>
+        <p class="text-sm text-primary text-center">Accesso anticipato alle nuove funzionalità</p>
       </div>
 
       <div class="flex flex-col gap-4 items-center">
         <%= render DS::FilledIcon.new(icon: "messages-square", variant: :surface) %>
-        <p class="text-sm text-primary text-center">Priority human support from team</p>
+        <p class="text-sm text-primary text-center">Supporto umano prioritario dal nostro team</p>
       </div>
     </div>
   </div>

@@ -22,7 +22,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   test "fails to sign in with bad password" do
     post sessions_url, params: { email: @user.email, password: "bad" }
     assert_response :unprocessable_entity
-    assert_equal "Invalid email or password.", flash[:alert]
+    assert_equal "Email o password non validi.", flash[:alert]
   end
 
   test "can sign out" do
@@ -31,7 +31,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
     delete session_url(session_record)
     assert_redirected_to new_session_path
-    assert_equal "You have signed out successfully.", flash[:notice]
+    assert_equal "Hai effettuato il logout con successo.", flash[:notice]
 
     # Verify session is destroyed
     assert_nil Session.find_by(id: session_record.id)

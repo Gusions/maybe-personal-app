@@ -1,0 +1,15 @@
+---
+it:
+  pages:
+    changelog:
+      title: Novità
+    dashboard:
+      net_worth_chart:
+        data_not_available: Dati non disponibili per il periodo selezionato
+        title: Patrimonio netto
+      no_account_empty_state:
+        new_account: Nuovo conto
+        no_account_subtitle: Poiché non è stato aggiunto nessun conto, non ci sono
+          dati da mostrare. Aggiungi i tuoi primi conti per iniziare a visualizzare
+          i dati della dashboard.
+        no_account_title: Nessun conto ancora

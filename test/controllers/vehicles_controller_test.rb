@@ -39,7 +39,7 @@ class VehiclesControllerTest < ActionDispatch::IntegrationTest
     assert_equal "mi", created_account.accountable.mileage_unit
 
     assert_redirected_to created_account
-    assert_equal "Vehicle account created", flash[:notice]
+    assert_equal "Conto Veicoli creato", flash[:notice]
     assert_enqueued_with(job: SyncJob)
   end
 
@@ -65,7 +65,7 @@ class VehiclesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to account_path(@account)
-    assert_equal "Vehicle account updated", flash[:notice]
+    assert_equal "Conto Veicoli aggiornato", flash[:notice]
     assert_enqueued_with(job: SyncJob)
   end
 end

@@ -21,6 +21,6 @@ class Import::ConfirmsControllerTest < ActionDispatch::IntegrationTest
 
     get import_confirm_path(import)
     assert_redirected_to import_clean_path(import)
-    assert_equal "You have invalid data, please edit until all errors are resolved", flash[:alert]
+    assert_equal "Hai dei dati non validi, modificali finché tutti gli errori non sono risolti", flash[:alert]
   end
 end

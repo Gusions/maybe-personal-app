@@ -1,0 +1,32 @@
+---
+it:
+  properties:
+    edit:
+      edit: Modifica %{account}
+    form:
+      address_line1: Indirizzo
+      address_line1_placeholder: Via Roma 123
+      area: Superficie abitabile
+      area_placeholder: '2000'
+      area_unit: Unità di misura
+      country: Paese
+      country_placeholder: IT
+      locality: Città
+      locality_placeholder: Milano
+      none: Nessuno
+      postal_code: CAP
+      postal_code_placeholder: '20100'
+      region: Provincia/Regione
+      region_placeholder: MI
+      subtype_prompt: Seleziona il tipo di immobile
+      year_built: Anno di costruzione
+      year_built_placeholder: '2000'
+    new:
+      title: Inserisci i dettagli dell'immobile
+    overview:
+      living_area: Superficie abitabile
+      market_value: Valore di mercato
+      purchase_price: Prezzo di acquisto
+      trend: Andamento
+      unknown: Sconosciuto
+      year_built: Anno di costruzione

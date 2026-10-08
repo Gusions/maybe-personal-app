@@ -2,10 +2,6 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="onboarding"
 export default class extends Controller {
-  setLocale(event) {
-    this.refreshWithParam("locale", event.target.value);
-  }
-
   setDateFormat(event) {
     this.refreshWithParam("date_format", event.target.value);
   }

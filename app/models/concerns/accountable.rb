@@ -73,11 +73,11 @@ module Accountable
   end
 
   def balance_display_name
-    "account value"
+    "valore del conto"
   end
 
   def opening_balance_display_name
-    "opening balance"
+    "saldo di apertura"
   end
 
   def icon

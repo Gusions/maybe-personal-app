@@ -2,16 +2,15 @@ class Depository < ApplicationRecord
   include Accountable
 
   SUBTYPES = {
-    "checking" => { short: "Checking", long: "Checking" },
-    "savings" => { short: "Savings", long: "Savings" },
-    "hsa" => { short: "HSA", long: "Health Savings Account" },
-    "cd" => { short: "CD", long: "Certificate of Deposit" },
-    "money_market" => { short: "MM", long: "Money Market" }
+    "checking" => { short: "Conto corrente", long: "Conto Corrente" },
+    "savings" => { short: "Risparmio", long: "Conto di Risparmio" },
+    "deposito_vincolato" => { short: "Conto deposito", long: "Conto Deposito Vincolato" },
+    "libretto_postale" => { short: "Libretto postale", long: "Libretto di Risparmio Postale" }
   }.freeze
 
   class << self
     def display_name
-      "Cash"
+      "Liquidità"
     end
 
     def color

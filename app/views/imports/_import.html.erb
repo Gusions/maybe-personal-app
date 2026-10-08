@@ -6,7 +6,8 @@
         <%= import.account.name + " " %>
       <% end %>
 
-      <%= t(".label", type: import.type.titleize, datetime: import.updated_at.strftime("%b %-d, %Y at %l:%M %p")) %>
+      <% import_type_labels = { "AccountImport" => "Importazione conto", "MintImport" => "Importazione Mint", "TransactionImport" => "Importazione transazioni", "TradeImport" => "Importazione operazioni" } %>
+      <%= t(".label", type: import_type_labels[import.type] || import.type, datetime: l(import.updated_at, format: :long)) %>
     <% end %>
 
     <% if import.pending? %>
@@ -47,9 +48,9 @@
         icon: "rotate-ccw",
         method: :put,
         confirm: CustomConfirm.new(
-          title: "Revert import?",
-          body: "This will delete transactions that were imported, but you will still be able to review and re-import your data at any time.",
-          btn_text: "Revert"
+          title: "Annullare l'importazione?",
+          body: "Le transazioni importate verranno eliminate, ma potrai comunque rivedere e reimportare i tuoi dati in qualsiasi momento.",
+          btn_text: "Annulla importazione"
         )) %>
 
     <% else %>
@@ -59,7 +60,7 @@
         href: import_path(import),
         icon: "trash-2",
         method: :delete,
-        confirm: CustomConfirm.for_resource_deletion("import")) %>
+        confirm: CustomConfirm.for_resource_deletion("l'importazione")) %>
     <% end %>
   <% end %>
 </div>

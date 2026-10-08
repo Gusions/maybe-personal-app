@@ -1,6 +1,6 @@
 usd:
   name: United States Dollar
-  priority: 1
+  priority: 2
   iso_code: USD
   iso_numeric: "840"
   html_code: "&dollar;"
@@ -14,7 +14,7 @@ usd:
   default_precision: 2
 eur:
   name: Euro
-  priority: 2
+  priority: 1
   iso_code: EUR
   iso_numeric: "978"
   html_code: "&euro;"

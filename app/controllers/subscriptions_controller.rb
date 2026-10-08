@@ -5,7 +5,7 @@ class SubscriptionsController < ApplicationController
   # Upgrade page for unsubscribed users
   def upgrade
     if Current.family.subscription&.active?
-      redirect_to root_path, notice: "You are already subscribed."
+      redirect_to root_path, notice: "Sei già abbonato."
     else
       @plan = params[:plan] || "annual"
       render layout: "onboardings"
@@ -30,9 +30,9 @@ class SubscriptionsController < ApplicationController
   def create
     if Current.family.can_start_trial?
       Current.family.start_trial_subscription!
-      redirect_to root_path, notice: "Welcome to Maybe!"
+      redirect_to root_path, notice: "Benvenuto su Maybe!"
     else
-      redirect_to root_path, alert: "You have already started or completed a trial. Please upgrade to continue."
+      redirect_to root_path, alert: "Hai già avviato o completato un periodo di prova. Effettua l'upgrade per continuare."
     end
   end
 
@@ -51,9 +51,9 @@ class SubscriptionsController < ApplicationController
 
     if checkout_result.success?
       Current.family.start_subscription!(checkout_result.subscription_id)
-      redirect_to root_path, notice: "Welcome to Maybe!  Your subscription has been created."
+      redirect_to root_path, notice: "Benvenuto su Maybe! Il tuo abbonamento è stato creato."
     else
-      redirect_to root_path, alert: "Something went wrong processing your subscription. Please contact us to get this fixed."
+      redirect_to root_path, alert: "Si è verificato un problema durante l'elaborazione del tuo abbonamento. Contattaci per risolverlo."
     end
   end
 

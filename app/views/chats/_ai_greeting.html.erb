@@ -2,27 +2,27 @@
   <%= render "chats/ai_avatar" %>
 
   <div class="max-w-[85%] text-sm space-y-4 text-primary">
-    <p>Hey <%= Current.user&.first_name || "there" %>! I'm an AI built by Maybe to help with your finances. I have access to the web and your account data.</p>
+    <p>Ciao<%= Current.user&.first_name ? " #{Current.user.first_name}" : "" %>! Sono un'AI creata da Maybe per aiutarti con le tue finanze. Ho accesso al web e ai dati del tuo conto.</p>
 
     <p>
-      You can use <span class="bg-container border border-secondary px-1.5 py-0.5 rounded font-mono text-xs">/</span> to access commands
+      Puoi usare <span class="bg-container border border-secondary px-1.5 py-0.5 rounded font-mono text-xs">/</span> per accedere ai comandi
     </p>
 
     <div class="space-y-3">
-      <p>Here's a few questions you can ask:</p>
+      <p>Ecco qualche domanda che puoi farmi:</p>
 
       <% questions = [
         {
           icon: "chart-area",
-          text: "Evaluate investment portfolio"
+          text: "Valuta il portafoglio investimenti"
         },
         {
           icon: "wallet-minimal",
-          text: "Show spending insights"
+          text: "Mostra analisi delle spese"
         },
         {
           icon: "alert-triangle",
-          text: "Find unusual patterns"
+          text: "Trova pattern inusuali"
         }
       ] %>
 

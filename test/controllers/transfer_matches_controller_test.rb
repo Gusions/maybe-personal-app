@@ -21,7 +21,7 @@ class TransferMatchesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to transactions_url
-    assert_equal "Transfer created", flash[:notice]
+    assert_equal "Trasferimento creato", flash[:notice]
   end
 
   test "creates transfer for target account" do
@@ -37,6 +37,6 @@ class TransferMatchesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to transactions_url
-    assert_equal "Transfer created", flash[:notice]
+    assert_equal "Trasferimento creato", flash[:notice]
   end
 end

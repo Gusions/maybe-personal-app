@@ -1,0 +1,14 @@
+---
+it:
+  entries:
+    create:
+      success: Movimento creato
+    destroy:
+      success: Movimento eliminato
+    empty:
+      description: Prova ad aggiungere un movimento, modificare i filtri o affinare la ricerca
+      title: Nessun movimento trovato
+    loading:
+      loading: Caricamento movimenti...
+    update:
+      success: Movimento aggiornato

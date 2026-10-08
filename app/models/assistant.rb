@@ -27,7 +27,8 @@ class Assistant
       message: message,
       instructions: instructions,
       function_tool_caller: function_tool_caller,
-      llm: get_model_provider(message.ai_model)
+      llm: get_model_provider(message.ai_model),
+      previous_messages: previous_messages_for(message)
     )
 
     latest_response_id = chat.latest_assistant_response_id
@@ -64,6 +65,14 @@ class Assistant
 
   private
     attr_reader :functions
+
+    # Cronologia della chat precedente a `message`, usata dai provider (es. Gemini) senza
+    # memoria conversazionale lato server per ricostruire il contesto ad ogni chiamata.
+    def previous_messages_for(message)
+      chat.messages.ordered.where(type: %w[UserMessage AssistantMessage]).where.not(id: message.id).map do |m|
+        { role: m.role, content: m.content }
+      end
+    end
 
     def function_tool_caller
       function_instances = functions.map do |fn|

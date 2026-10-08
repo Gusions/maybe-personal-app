@@ -1,0 +1,97 @@
+---
+it:
+  settings:
+    billings:
+      show:
+        page_title: Fatturazione
+        subscription_subtitle: Aggiorna il tuo abbonamento e i dati di fatturazione
+        subscription_title: Gestisci abbonamento
+    preferences:
+      show:
+        country: Paese
+        currency: Valuta
+        date_format: Formato data
+        general_subtitle: Configura le tue preferenze
+        general_title: Generale
+        default_period: Periodo predefinito
+        language: Lingua
+        page_title: Preferenze
+        theme_dark: Scuro
+        theme_light: Chiaro
+        theme_subtitle: Scegli il tema preferito per l'app
+        theme_system: Sistema
+        theme_title: Tema
+        timezone: Fuso orario
+    profiles:
+      destroy:
+        cannot_remove_self: Non puoi rimuovere te stesso dal conto.
+        member_removal_failed: Si è verificato un problema durante la rimozione del membro.
+        member_removed: Membro rimosso con successo.
+        not_authorized: Non sei autorizzato a rimuovere membri.
+      show:
+        confirm_delete:
+          body: Sei sicuro di voler eliminare definitivamente il tuo account? Questa azione
+            è irreversibile.
+          title: Eliminare l'account?
+        confirm_reset:
+          body: Sei sicuro di voler reimpostare il tuo account? Questo eliminerà tutti i tuoi conti, categorie, esercenti, tag e altri dati. Questa azione non può essere annullata.
+          title: Reimpostare l'account?
+        confirm_remove_invitation:
+          body: Sei sicuro di voler rimuovere l'invito per %{email}?
+          title: Rimuovi invito
+        confirm_remove_member:
+          body: Sei sicuro di voler rimuovere %{name} dal tuo account?
+          title: Rimuovi membro
+        danger_zone_title: Zona pericolosa
+        delete_account: Elimina account
+        delete_account_warning: L'eliminazione dell'account rimuoverà definitivamente tutti
+          i tuoi dati e non potrà essere annullata.
+        reset_account: Reimposta account
+        reset_account_warning: La reimpostazione dell'account eliminerà tutti i tuoi conti, categorie, esercenti, tag e altri dati, ma manterrà intatto il tuo account utente.
+        email: Email
+        first_name: Nome
+        household_form_input_placeholder: Inserisci il nome del nucleo familiare
+        household_form_label: Nome del nucleo familiare
+        household_subtitle: Invita familiari, partner e altre persone. Gli invitati
+          possono accedere al tuo nucleo familiare e ai conti condivisi.
+        household_title: Nucleo familiare
+        invitation_link: Link di invito
+        invite_member: Aggiungi membro
+        last_name: Cognome
+        page_title: Account
+        pending: In attesa
+        profile_subtitle: Personalizza come appari su Maybe
+        profile_title: Profilo
+        remove_invitation: Rimuovi invito
+        remove_member: Rimuovi membro
+        save: Salva
+    securities:
+      show:
+        page_title: Sicurezza
+    settings_nav:
+      accounts_label: Conti
+      api_key_label: Chiave API
+      billing_label: Fatturazione
+      categories_label: Categorie
+      feedback_label: Feedback
+      general_section_title: Generale
+      imports_label: Importazioni
+      logout: Esci
+      merchants_label: Esercenti
+      other_section_title: Altro
+      preferences_label: Preferenze
+      profile_label: Account
+      rules_label: Regole
+      security_label: Sicurezza
+      self_hosting_label: Self-hosting
+      tags_label: Tag
+      transactions_section_title: Transazioni
+      whats_new_label: Novità
+    settings_nav_link_large:
+      next: Avanti
+      previous: Indietro
+    user_avatar_field:
+      accepted_formats: JPG o PNG. Massimo 5MB.
+      choose: Carica foto
+      choose_label: (facoltativo)
+      change: Cambia foto

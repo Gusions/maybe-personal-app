@@ -1,13 +1,13 @@
 module TransactionsHelper
   def transaction_search_filters
     [
-      { key: "account_filter", label: "Account", icon: "layers" },
-      { key: "date_filter", label: "Date", icon: "calendar" },
-      { key: "type_filter", label: "Type", icon: "tag" },
-      { key: "amount_filter", label: "Amount", icon: "hash" },
-      { key: "category_filter", label: "Category", icon: "shapes" },
+      { key: "account_filter", label: "Conto", icon: "layers" },
+      { key: "date_filter", label: "Data", icon: "calendar" },
+      { key: "type_filter", label: "Tipo", icon: "tag" },
+      { key: "amount_filter", label: "Importo", icon: "hash" },
+      { key: "category_filter", label: "Categoria", icon: "shapes" },
       { key: "tag_filter", label: "Tag", icon: "tags" },
-      { key: "merchant_filter", label: "Merchant", icon: "store" }
+      { key: "merchant_filter", label: "Esercente", icon: "store" }
     ]
   end
 

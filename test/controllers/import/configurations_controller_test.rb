@@ -29,7 +29,7 @@ class Import::ConfigurationsControllerTest < ActionDispatch::IntegrationTest
     }
 
     assert_redirected_to import_clean_url(@import)
-    assert_equal "Import configured successfully.", flash[:notice]
+    assert_equal "Importazione configurata con successo.", flash[:notice]
 
     # Verify configurations were saved
     @import.reload

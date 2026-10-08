@@ -1,22 +1,22 @@
 <%= render DS::Dialog.new(reload_on_close: true) do |dialog| %>
   <%
     title = if @rule.name.present?
-              "Confirm changes to \"#{@rule.name}\""
+              "Conferma le modifiche a \"#{@rule.name}\""
             else
-              "Confirm changes"
+              "Conferma le modifiche"
             end
   %>
   <% dialog.with_header(title: title) %>
 
   <% dialog.with_body do %>
     <p class="text-secondary text-sm mb-4">
-      You are about to apply this rule to
+      Stai per applicare questa regola a
       <span class="text-primary font-medium"><%= @rule.affected_resource_count %> <%= @rule.resource_type.pluralize %></span>
-      that meet the specified rule criteria.  Please confirm if you wish to proceed with this change.
+      che soddisfano i criteri specificati nella regola. Conferma se vuoi procedere con questa modifica.
     </p>
 
     <%= render DS::Button.new(
-      text: "Confirm changes",
+      text: "Conferma le modifiche",
       href: apply_rule_path(@rule),
       method: :post,
       full_width: true,

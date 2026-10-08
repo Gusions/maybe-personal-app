@@ -239,7 +239,7 @@ class Import < ApplicationRecord
     end
 
     def default_row_name
-      "Imported item"
+      "Elemento importato"
     end
 
     def default_currency

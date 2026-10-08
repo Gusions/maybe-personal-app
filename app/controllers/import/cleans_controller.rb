@@ -4,7 +4,7 @@ class Import::CleansController < ApplicationController
   before_action :set_import
 
   def show
-    redirect_to import_configuration_path(@import), alert: "Please configure your import before proceeding." unless @import.configured?
+    redirect_to import_configuration_path(@import), alert: "Configura la tua importazione prima di procedere." unless @import.configured?
 
     rows = @import.rows.ordered
 

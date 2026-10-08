@@ -1,0 +1,23 @@
+---
+it:
+  loans:
+    edit:
+      edit: Modifica %{account}
+    form:
+      interest_rate: Tasso di interesse
+      interest_rate_placeholder: '5.25'
+      initial_balance: Importo originale del prestito
+      rate_type: Tipo di tasso
+      term_months: Durata (mesi)
+      term_months_placeholder: '360'
+    new:
+      title: Inserisci i dettagli del prestito
+    overview:
+      interest_rate: Tasso di interesse
+      monthly_payment: Rata mensile
+      not_applicable: N/D
+      original_principal: Capitale originario
+      remaining_principal: Capitale residuo
+      term: Durata
+      type: Tipo
+      unknown: Sconosciuto

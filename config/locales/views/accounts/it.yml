@@ -1,0 +1,67 @@
+---
+it:
+  accounts:
+    account:
+      troubleshoot: Risolvi problemi
+    chart:
+      data_not_available: Dati non disponibili per il periodo selezionato
+    create:
+      success: "Conto %{type} creato"
+    destroy:
+      success: "Conto %{type} pianificato per l'eliminazione"
+    empty:
+      empty_message: Aggiungi un conto tramite connessione, importazione o inserimento
+        manuale.
+      new_account: Nuovo conto
+      no_accounts: Ancora nessun conto
+    form:
+      balance: Saldo attuale
+      name_label: Nome conto
+      name_placeholder: Nome conto di esempio
+    index:
+      accounts: Conti
+      manual_accounts:
+        other_accounts: Altri conti
+      new_account: Nuovo conto
+      sync: Sincronizza tutto
+    new:
+      import_accounts: Importa conti
+      method_selector:
+        connected_entry: Collega conto
+        connected_entry_eu: Collega conto UE
+        manual_entry: Inserisci saldo conto
+        title: Come vuoi aggiungerlo?
+      title: Cosa vuoi aggiungere?
+    show:
+      activity:
+        amount: Importo
+        balance: Saldo
+        date: Data
+        entries: voci
+        entry: voce
+        new: Nuovo
+        new_balance: Nuovo saldo
+        new_transaction: Nuova transazione
+        no_entries: Nessuna voce trovata
+        title: Attività
+      chart:
+        balance: Saldo
+        owed: Importo dovuto
+      menu:
+        confirm_accept: Elimina "%{name}"
+        confirm_body_html: "<p>Eliminando questo conto, cancellerai la sua cronologia
+          di valore, influenzando vari aspetti del tuo conto complessivo. Questa azione
+          avrà un impatto diretto sui calcoli del tuo patrimonio netto e sui grafici
+          del conto.</p><br /> <p>Dopo l'eliminazione, non sarà possibile ripristinare
+          le informazioni del conto perché dovrai aggiungerlo come nuovo conto.</p>"
+        confirm_title: Eliminare il conto?
+        edit: Modifica
+        import: Importa transazioni
+        manage: Gestisci conti
+    update:
+      success: "Conto %{type} aggiornato"
+  email_confirmations:
+    new:
+      invalid_token: Link di conferma non valido o scaduto.
+      success_login: La tua email è stata confermata. Accedi con il tuo nuovo indirizzo
+        email.

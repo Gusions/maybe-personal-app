@@ -1,9 +1,10 @@
 class Assistant::Responder
-  def initialize(message:, instructions:, function_tool_caller:, llm:)
+  def initialize(message:, instructions:, function_tool_caller:, llm:, previous_messages: [])
     @message = message
     @instructions = instructions
     @function_tool_caller = function_tool_caller
     @llm = llm
+    @previous_messages = previous_messages
   end
 
   def on(event_name, &block)
@@ -31,7 +32,7 @@ class Assistant::Responder
   end
 
   private
-    attr_reader :message, :instructions, :function_tool_caller, :llm
+    attr_reader :message, :instructions, :function_tool_caller, :llm, :previous_messages
 
     def handle_follow_up_response(response)
       streamer = proc do |chunk|
@@ -54,18 +55,21 @@ class Assistant::Responder
       # Get follow-up response with tool call results
       get_llm_response(
         streamer: streamer,
+        function_requests: response.function_requests,
         function_results: function_tool_calls.map(&:to_result),
         previous_response_id: response.id
       )
     end
 
-    def get_llm_response(streamer:, function_results: [], previous_response_id: nil)
+    def get_llm_response(streamer:, function_requests: [], function_results: [], previous_response_id: nil)
       response = llm.chat_response(
         message.content,
         model: message.ai_model,
         instructions: instructions,
         functions: function_tool_caller.function_definitions,
+        function_requests: function_requests,
         function_results: function_results,
+        previous_messages: previous_messages,
         streamer: streamer,
         previous_response_id: previous_response_id
       )

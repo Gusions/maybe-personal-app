@@ -13,7 +13,7 @@ class BalanceSheet::ClassificationGroup
   end
 
   def name
-    classification.titleize.pluralize
+    classification == "asset" ? "Attività" : "Passività"
   end
 
   def icon

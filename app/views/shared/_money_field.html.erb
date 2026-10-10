@@ -43,9 +43,14 @@
           <%= currency.symbol %>
         </span>
 
-        <%= form.number_field amount_method,
+        <%# Testo libero (non type="number"): i browser scartano silenziosamente la virgola
+            digitata in un input numerico (es. "5000,50" diventa "500050"), producendo importi
+            sbagliati senza alcun errore visibile. Normalizziamo noi la virgola in punto via JS
+            (vedi money_field_controller.js), accettando sia "5000,50" che "5000.50". %>
+        <%= form.text_field amount_method,
           class: "form-field__input",
           inline: true,
+          inputmode: "decimal",
           placeholder: "100",
           value: if options[:value]
             sprintf("%.#{currency.default_precision}f", options[:value])
@@ -53,13 +58,11 @@
             val = form.object.public_send(amount_method)
             sprintf("%.#{currency.default_precision}f", val) if val.present?
           end,
-          min: options[:min] || -99999999999999,
-          max: options[:max] || 99999999999999,
-          step: currency.step,
           disabled: options[:disabled],
           data: {
             "money-field-target": "amount",
-            "auto-submit-form-target": ("auto" if options[:auto_submit])
+            "auto-submit-form-target": ("auto" if options[:auto_submit]),
+            action: "input->money-field#normalizeAmount blur->money-field#normalizeAmount"
           }.compact,
           required: options[:required] %>
       </div>

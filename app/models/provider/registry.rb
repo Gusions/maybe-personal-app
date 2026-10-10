@@ -22,10 +22,11 @@ class Provider::Registry
       region.to_sym == :us ? plaid_us : plaid_eu
     end
 
-    # Preferisce Gemini (gratuito) se configurato, altrimenti usa OpenAI.
+    # Preferisce Groq (gratuito, quota giornaliera molto più alta), poi Gemini (gratuito ma
+    # limitato a 20 richieste/giorno sul piano free), poi OpenAI (a pagamento).
     # Usato nei punti che finora chiamavano `get_provider(:openai)` direttamente.
     def ai_provider
-      gemini || openai
+      groq || gemini || openai
     end
 
     # Nome del modello da usare per la chat, in base al provider AI attivo.
@@ -89,6 +90,14 @@ class Provider::Registry
 
         Provider::Gemini.new(api_key)
       end
+
+      def groq
+        api_key = ENV["GROQ_API_KEY"]
+
+        return nil unless api_key.present?
+
+        Provider::Groq.new(api_key)
+      end
   end
 
   def initialize(concept)
@@ -118,7 +127,7 @@ class Provider::Registry
       when :securities
         %i[synth]
       when :llm
-        %i[gemini openai]
+        %i[groq gemini openai]
       else
         %i[synth plaid_us plaid_eu github openai]
       end

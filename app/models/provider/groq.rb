@@ -1,29 +1,24 @@
-# Provider per Google Gemini, usato come alternativa gratuita a OpenAI per le funzionalità AI
+# Provider per Groq, usato come alternativa gratuita a OpenAI/Gemini per le funzionalità AI
 # (chat assistente, auto-categorizzazione, rilevamento esercenti).
 #
-# Usiamo l'endpoint di Gemini compatibile con le API OpenAI
-# (https://ai.google.dev/gemini-api/docs/openai), quindi riutilizziamo la gemma `ruby-openai`
-# già presente, puntandola a un `uri_base` diverso.
+# Groq espone un endpoint compatibile con le API OpenAI (Chat Completions), quindi riutilizziamo
+# la gemma `ruby-openai` già presente, puntandola a un `uri_base` diverso. Il piano gratuito di
+# Groq ha limiti giornalieri molto più alti di quello di Gemini.
 #
-# Differenza chiave rispetto a OpenAI: l'app usa la "Responses API" di OpenAI, che mantiene la
-# cronologia della conversazione lato server (`previous_response_id`). L'endpoint compatibile di
-# Gemini supporta invece solo le "Chat Completions", che sono stateless: dobbiamo quindi
-# ricostruire l'intera cronologia della chat (`previous_messages`) ad ogni chiamata.
-class Provider::Gemini < Provider
+# Stessa differenza rispetto a OpenAI già vista in Provider::Gemini: qui usiamo le "Chat
+# Completions" stateless, quindi ricostruiamo l'intera cronologia (`previous_messages`) ad ogni
+# chiamata.
+class Provider::Groq < Provider
   include LlmConcept
 
   Error = Class.new(Provider::Error)
 
-  BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
+  BASE_URL = "https://api.groq.com/openai/v1/"
 
-  # Usiamo l'alias "-latest" invece di un nome di modello fisso: Google ritira spesso le versioni
-  # specifiche (es. gemini-2.0-flash, gemini-2.5-flash sono già stati ritirati al momento di
-  # scrivere questo codice), mentre l'alias punta sempre al modello flash attualmente disponibile.
-  MODELS = %w[gemini-flash-latest]
-  AUTO_TASK_MODEL = "gemini-flash-latest"
+  MODELS = %w[llama-3.3-70b-versatile]
+  AUTO_TASK_MODEL = "llama-3.3-70b-versatile"
 
-  # Il piano gratuito di Gemini risponde spesso con 429 (rate limit) o 503 (sovraccarico):
-  # sono errori transitori, quindi riproviamo con backoff prima di arrenderci.
+  # Come per Gemini: 429 (rate limit) o 503 (sovraccarico) sono errori transitori.
   RETRYABLE_STATUSES = [ 429, 503 ].freeze
 
   def self.with_retry(max_attempts: 3)

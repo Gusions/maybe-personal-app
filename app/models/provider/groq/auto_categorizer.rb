@@ -1,4 +1,4 @@
-class Provider::Gemini::AutoCategorizer
+class Provider::Groq::AutoCategorizer
   def initialize(client, transactions: [], user_categories: [])
     @client = client
     @transactions = transactions
@@ -6,9 +6,9 @@ class Provider::Gemini::AutoCategorizer
   end
 
   def auto_categorize
-    response = Provider::Gemini.with_retry do
+    response = Provider::Groq.with_retry do
       client.chat(parameters: {
-        model: Provider::Gemini::AUTO_TASK_MODEL,
+        model: Provider::Groq::AUTO_TASK_MODEL,
         messages: [
           { role: "system", content: instructions },
           { role: "user", content: developer_message }

@@ -11,6 +11,32 @@ export default class extends Controller {
     this.updateAmount(selectedCurrency);
   }
 
+  // L'importo è un input di testo libero (non type="number"), quindi accetta sia "5000.50"
+  // che il formato italiano "5000,50" o "1.235,31" (punto delle migliaia + virgola decimale).
+  // Qui lo normalizziamo sempre nel formato con il punto come separatore decimale, che è
+  // quello che il server si aspetta.
+  normalizeAmount(e) {
+    const input = e.target;
+    const raw = input.value;
+
+    if (!raw) return;
+
+    const hasComma = raw.includes(",");
+    const hasDot = raw.includes(".");
+
+    let normalized = raw;
+
+    if (hasComma && hasDot) {
+      normalized = raw.replace(/\./g, "").replace(",", ".");
+    } else if (hasComma) {
+      normalized = raw.replace(",", ".");
+    }
+
+    if (normalized !== raw) {
+      input.value = normalized;
+    }
+  }
+
   updateAmount(currency) {
     new CurrenciesService().get(currency).then((currency) => {
       this.amountTarget.step = currency.step;
